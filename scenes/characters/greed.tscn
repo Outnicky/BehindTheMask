@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://dwx2b6qrcv2ne" path="res://sprites/frisko/ZOIO UAAAA-Sheet.png" id="1_6y5ai"]
 [ext_resource type="Script" uid="uid://momwxxbanvjp" path="res://scripts/greed.gd" id="1_483m1"]
 [ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/enemy_hitbox.gd" id="2_483m1"]
+[ext_resource type="Script" uid="uid://b17bnsr48nemm" path="res://scripts/attack.gd" id="4_tpf3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1akd"]
 atlas = ExtResource("1_6y5ai")
@@ -232,71 +233,69 @@ size = Vector2(17.5, 37)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwxq7"]
 size = Vector2(84, 72)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_483m1"]
+size = Vector2(117.85712, 106.52178)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pbkm8"]
 size = Vector2(57.817146, 153.80441)
 
 [node name="Greed" type="CharacterBody2D" unique_id=1294177565]
+collision_layer = 4
+collision_mask = 2
 script = ExtResource("1_483m1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927683031]
-position = Vector2(0, 4.0000005)
+position = Vector2(-2, 2)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_hfxsd")
 animation = &"Attack1"
 autoplay = "Idle"
-frame_progress = 0.6893251
-offset = Vector2(-36.999996, -5.333331)
+frame_progress = 0.9041868
+offset = Vector2(2.3333397, -17.333332)
 
 [node name="ground_left" type="Area2D" parent="." unique_id=431946660]
-position = Vector2(-131, 26)
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_left" unique_id=417572366]
-position = Vector2(-19.25, 46)
+position = Vector2(-109, 77)
 shape = SubResource("RectangleShape2D_8w04r")
 
 [node name="ground_right" type="Area2D" parent="." unique_id=131601282]
-position = Vector2(57, 27)
 disable_mode = 1
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_right" unique_id=888949147]
-position = Vector2(-24, 50)
+position = Vector2(90, 85)
 shape = SubResource("RectangleShape2D_8w04r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1078886036]
-visible = false
-position = Vector2(-62, 30)
 shape = SubResource("RectangleShape2D_hwxq7")
 debug_color = Color(0, 0.5584138, 0.88937813, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1226178824]
-visible = false
 scale = Vector2(0.8400002, 0.9199996)
 collision_layer = 0
 collision_priority = 2.35
 script = ExtResource("2_483m1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1073539304]
-position = Vector2(-75.89284, 35.3261)
-shape = SubResource("RectangleShape2D_pbkm8")
+shape = SubResource("RectangleShape2D_483m1")
 debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
 
 [node name="Attack_Area" type="Area2D" parent="." unique_id=1350204098]
-scale = Vector2(0.8400002, 0.9199996)
 collision_layer = 0
 collision_priority = 2.35
-script = ExtResource("2_483m1")
+script = ExtResource("4_tpf3e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack_Area" unique_id=1759996664]
-position = Vector2(-189.28566, 17.391312)
+position = Vector2(-95, 9.920662)
 shape = SubResource("RectangleShape2D_pbkm8")
 debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Attack_Area" unique_id=1395149636]
-position = Vector2(-86.89366, -88.52935)
+position = Vector2(7.3919983, -96)
 rotation = 1.5936214
 shape = SubResource("RectangleShape2D_pbkm8")
 debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)

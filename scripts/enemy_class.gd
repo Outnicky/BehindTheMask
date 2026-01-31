@@ -21,7 +21,7 @@ var timer_walk : Timer
 var timer_lose_sight: Timer
 
 
-enum State {Idle, Wandering, Chasing}
+enum State {Idle, Wandering, Chasing, Attacking}
 var state = State.Idle
 var player_in_vision = false
 @onready var player = $"%Player"
@@ -74,6 +74,7 @@ func has_floor(obj: Area2D)-> bool:
 	#return !obj.get_overlapping_bodies().size()==0
 	
 func wonder():
+	set_state(State.Wandering)
 	var multipier = randf_range(0.5, 1)
 	if !has_floor(ground_right):
 		direction = -1 
@@ -96,13 +97,21 @@ func set_state(new_state: State):
 	if state == new_state:
 		return
 	if new_state == State.Idle:
+		$AnimatedSprite2D.play('Idle')
 		state = State.Idle	
 	if new_state == State.Wandering:
+		$AnimatedSprite2D.play('Walk')
 		state = State.Wandering
 	if new_state == State.Chasing:
+		$AnimatedSprite2D.play('Walk')
 		state = State.Chasing
+	if new_state == State.Attacking:
+		state = State.Attacking
+		$AnimatedSprite2D.play('Attack')
+
 	
-	
+
+
 
 	
 	
@@ -136,7 +145,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	
 	if state == State.Chasing:
 		var vector =   player.position - position
 		look(vector.normalized()) 
@@ -144,7 +152,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = 0
 		else:
 			timer_lose_sight.start()
-
 			var dir = 1
 			if vector.x < 0:
 				dir = -1
@@ -159,5 +166,12 @@ func _physics_process(delta: float) -> void:
 	if velocity.x < 0:
 		if !has_floor(ground_left):
 			velocity.x = 0
+
 	
 	move_and_slide()
+
+func flip_character():
+	var a = direction
+	if a == -1:
+		a = 0
+	$AnimatedSprite2D.flip_h  = a

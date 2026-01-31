@@ -153,7 +153,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_x8erh")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.4470301
+frame_progress = 0.8958126
 offset = Vector2(-36.999996, -5.333331)
 
 [node name="ground_left" type="Area2D" parent="." unique_id=920225210]

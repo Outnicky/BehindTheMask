@@ -3,11 +3,7 @@ class_name envy extends EnemyClass
 
 @onready var animation_player: AnimatedSprite2D= $AnimatedSprite2D
 
-func flip_character():
-	var a = direction
-	if a == -1:
-		a = 0
-	animation_player.flip_h  = a
+
 
 func _process(delta: float) -> void:
 	flip_character()
