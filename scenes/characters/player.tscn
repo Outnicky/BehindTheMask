@@ -1,95 +1,73 @@
 [gd_scene format=3 uid="uid://ducbjol5rb3np"]
 
 [ext_resource type="Script" uid="uid://dcpu2356jv8q5" path="res://scripts/character_move.gd" id="1_qhqgy"]
-[ext_resource type="Texture2D" uid="uid://by8aivvvk73vk" path="res://sprites/__Attack-ezgif.com-gif-to-sprite-converter.png" id="2_dqkch"]
 [ext_resource type="Shape2D" uid="uid://uyeutbgk0e5u" path="res://resources/STAND.tres" id="2_fjrip"]
-[ext_resource type="Texture2D" uid="uid://dr5ma3kvnjw6y" path="res://sprites/_Jump.png" id="2_tuyoq"]
-[ext_resource type="Texture2D" uid="uid://c4gs1bkkiu2lu" path="res://sprites/_Idle.png" id="3_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://cyfafsvb83nmv" path="res://sprites/_Dash.png" id="4_fjrip"]
-[ext_resource type="Texture2D" uid="uid://rslp11afy6sd" path="res://sprites/_Hit.png" id="5_smehm"]
+[ext_resource type="AudioStream" uid="uid://b0wfcye8ndopd" path="res://sounds/perfectdodgesfx.wav" id="3_kqtwu"]
+[ext_resource type="AudioStream" uid="uid://ddu2c4px4efhi" path="res://sounds/damagesfx.mp3" id="4_6eyoc"]
+[ext_resource type="AudioStream" uid="uid://bb1oc8ak2ay22" path="res://sounds/swingsfx.wav" id="5_eojnx"]
+[ext_resource type="AudioStream" uid="uid://b41af52coxwxw" path="res://sounds/dashsfx.wav" id="6_qgnko"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8mm7a"]
-atlas = ExtResource("2_dqkch")
 region = Rect2(0, 0, 127, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hq1ik"]
-atlas = ExtResource("2_dqkch")
 region = Rect2(127, 0, 127, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_66tet"]
-atlas = ExtResource("2_dqkch")
 region = Rect2(381, 0, 127, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nfk4m"]
-atlas = ExtResource("2_dqkch")
 region = Rect2(254, 0, 127, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3v2ag"]
-atlas = ExtResource("4_fjrip")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jej6c"]
-atlas = ExtResource("4_fjrip")
 region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
-atlas = ExtResource("5_smehm")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(360, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(480, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(600, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i4ail"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(720, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a38lo"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(840, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(960, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l71n6"]
-atlas = ExtResource("3_qlg0r")
 region = Rect2(1080, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ur7pv"]
-atlas = ExtResource("2_tuyoq")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y4r1p"]
-atlas = ExtResource("2_tuyoq")
 region = Rect2(120, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
-atlas = ExtResource("2_tuyoq")
 region = Rect2(240, 0, 120, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
-atlas = ExtResource("2_tuyoq")
 region = Rect2(0, 0, 120, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gyfs4"]
@@ -252,6 +230,18 @@ collision_mask = 2
 position = Vector2(0.06845161, -0.16078606)
 target_position = Vector2(0, -0.24117911)
 collision_mask = 2
+
+[node name="perfectdodgesfx" type="AudioStreamPlayer" parent="." unique_id=985019928]
+stream = ExtResource("3_kqtwu")
+
+[node name="damagesfx" type="AudioStreamPlayer" parent="." unique_id=61539620]
+stream = ExtResource("4_6eyoc")
+
+[node name="Swingsfx" type="AudioStreamPlayer" parent="." unique_id=1877538611]
+stream = ExtResource("5_eojnx")
+
+[node name="Dashsfx" type="AudioStreamPlayer" parent="." unique_id=1865440026]
+stream = ExtResource("6_qgnko")
 
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

@@ -142,6 +142,9 @@ size = Vector2(62, 102)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ve060"]
 size = Vector2(99.99998, 136.2609)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7ygi"]
+size = Vector2(24.093006, 5.907379)
+
 [node name="Envy" type="CharacterBody2D" unique_id=736464493]
 collision_layer = 4
 collision_mask = 2
@@ -152,7 +155,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_x8erh")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.38057208
+frame_progress = 0.9258362
 offset = Vector2(-2.3333282, -5.333331)
 
 [node name="ground_left" type="Area2D" parent="." unique_id=920225210]
@@ -192,3 +195,15 @@ debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
 position = Vector2(-83, -33)
 
 [node name="RayCast2D" type="RayCast2D" parent="Attack" unique_id=667316928]
+
+[node name="Attack_Area" type="Area2D" parent="Attack" unique_id=1633189543]
+position = Vector2(36, 0)
+scale = Vector2(0.7056004, 0.84639925)
+collision_layer = 0
+collision_priority = 2.35
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack/Attack_Area" unique_id=777408033]
+position = Vector2(-113.37864, -40.170166)
+scale = Vector2(0.9999999, 1)
+shape = SubResource("RectangleShape2D_j7ygi")
+debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)

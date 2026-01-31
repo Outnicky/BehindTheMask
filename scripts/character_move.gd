@@ -1,4 +1,3 @@
-
 class_name Player extends CharacterBody2D
 
 const SPEED = 300.0
@@ -15,6 +14,10 @@ var block_actions = false
 const crouch_speed = 0.2
 var first_frame = false
 @onready var area : Area2D = $AreaSword
+@onready var dash_sfx = $Dashsfx as AudioStreamPlayer
+@onready var swing = $Swingsfx as AudioStreamPlayer
+@onready var damagesfx = $damagesfx as AudioStreamPlayer
+@onready var perfectdodgesfx = $perfectdodgesfx as AudioStreamPlayer
 
 enum Actions {Jump, Attack, Move, Nothing, Dash}
 var action =  Actions.Nothing
@@ -34,17 +37,20 @@ const push_back_force = 100
 const immunity_time = 1
 var immune = false
 func take_damage(enemy: EnemyClass):
-	print('damagaea ')
-	if immune:
+	if immune or dashing:
+		if dashing:
+			print("PARRIED! EZ!")
+			perfectdodgesfx.play()
 		return
 	var dir = enemy.position - position
 	#velocity.x = -dir.x * push_back_force
 	immune = true
+	damagesfx.play()
 	get_tree().create_timer(immunity_time).timeout.connect(func():
 		immune = false)
 
 	health -= enemy.attack_dmg
-	print('Player take damagead')
+	print("TOOK DMG")
 	var tween = get_tree().create_tween()
 	push = -900
 	tween.tween_property(self, "push", 0, 0.3)
@@ -75,7 +81,7 @@ func set_action(new_action: Actions):
 			animation_player.play("Fall"))
 	
 	elif new_action == Actions.Move and is_on_floor():
-		animation_player.play("Walk") 
+		animation_player.play("Walk")
 	elif new_action == Actions.Attack:
 		animation_player.play("Attack")
 		block_actions = true
@@ -115,6 +121,7 @@ func get_inputs():
 	if Input.is_action_just_pressed("dash") and can_dash:
 		can_dash = false
 		dashing = true
+		dash_sfx.play()
 		$dash_timer.start()	
 		$dash_again_timer.start()	
 	if Input.is_action_pressed("crouch") and (crouching == false):
@@ -134,6 +141,7 @@ func get_inputs():
 		walk_right = 1
 	
 	if Input.is_action_pressed("attack") and !action == Actions.Attack :
+		swing.play()
 		if (action != Actions.Attack):
 			set_action(Actions.Attack)
 			for body in area.get_overlapping_areas():
@@ -197,4 +205,3 @@ func _on_sword_hit_area_entered(area: Area2D) -> void:
 #	if area is EnemyClass:
 		
 	##	area.take_damage()
-		

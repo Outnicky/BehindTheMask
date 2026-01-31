@@ -26,7 +26,7 @@ func shoot(direction:Vector2):
 	traveled_distance +=bullet_size
 	if traveled_distance > target_distance:
 		traveled_distance = target_distance
-		line.add_point(Vector2(traveled_distance ))
+		line.add_point(Vector2(traveled_distance, 0 ))
 		set_state(State.Chasing)
 		
 	

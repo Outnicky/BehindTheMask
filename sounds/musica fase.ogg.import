@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dm0gukcc1u33d"
+path="res://.godot/imported/musica fase.ogg-6bbb342a207be93c3c14cb123bb29923.oggvorbisstr"
+
+[deps]
+
+source_file="res://sounds/musica fase.ogg"
+dest_files=["res://.godot/imported/musica fase.ogg-6bbb342a207be93c3c14cb123bb29923.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
