@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cyfafsvb83nmv"
-path="res://.godot/imported/_Dash.png-3d009c8c9bc3ec6a8f12664724f5defd.ctex"
+uid="uid://c1bdvvyn8ugn5"
+path="res://.godot/imported/gamejam_ui-Sheet.png-563cce9bd88e5dcd4f2115f91c3a60b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/_Dash.png"
-dest_files=["res://.godot/imported/_Dash.png-3d009c8c9bc3ec6a8f12664724f5defd.ctex"]
+source_file="res://sprites/frisko/gamejam_ui-Sheet.png"
+dest_files=["res://.godot/imported/gamejam_ui-Sheet.png-563cce9bd88e5dcd4f2115f91c3a60b1.ctex"]
 
 [params]
 

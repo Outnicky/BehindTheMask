@@ -15,8 +15,6 @@ func _process(delta: float) -> void:
 func set_state(new_state: State):
 	if state == new_state:
 		return
-	
-
 	if new_state == State.Idle:
 		animation_player.play("Idle")
 		
@@ -28,3 +26,8 @@ func set_state(new_state: State):
 	if new_state == State.Chasing:
 		animation_player.play("Attack")
 		state = State.Chasing
+		
+
+
+
+		

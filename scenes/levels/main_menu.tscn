@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://csss0onr5lh0j"]
+
+[ext_resource type="Texture2D" uid="uid://4in1w435lbj1" path="res://sprites/frisko/Menu-Sheet.png" id="1_fsby3"]
+[ext_resource type="Script" uid="uid://bq52stmadti1k" path="res://scripts/main_menu.gd" id="1_geflf"]
+[ext_resource type="Theme" uid="uid://tae35at22dh7" path="res://fonts/font_theme.tres" id="2_721jg"]
+[ext_resource type="AudioStream" uid="uid://b1lq1kioyg6og" path="res://music/tema menu.ogg" id="2_leamy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leamy"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(0, 0, 600, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_721jg"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(600, 0, 600, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_geflf"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(1200, 0, 600, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkd6t"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(1800, 0, 600, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_keln3"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(2400, 0, 600, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_crctu"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(3000, 0, 600, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sn5u3"]
+atlas = ExtResource("1_fsby3")
+region = Rect2(3600, 0, 600, 350)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cn35j"]
+animations = [{
+"frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_leamy")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_721jg")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_geflf")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_fkd6t")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_keln3")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_crctu")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_sn5u3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Control" type="Node2D" unique_id=1398923764]
+script = ExtResource("1_geflf")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1533963650]
+position = Vector2(300, 178)
+sprite_frames = SubResource("SpriteFrames_cn35j")
+autoplay = "default"
+frame = 4
+frame_progress = 0.29301527
+
+[node name="Button" type="Button" parent="." unique_id=434959444]
+offset_left = 39.0
+offset_top = 138.0
+offset_right = 203.0
+offset_bottom = 226.0
+theme = ExtResource("2_721jg")
+text = "Start"
+
+[node name="Button2" type="Button" parent="." unique_id=974189221]
+offset_left = 29.0
+offset_top = 242.0
+offset_right = 193.0
+offset_bottom = 330.0
+theme = ExtResource("2_721jg")
+text = "Quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1520556438]
+stream = ExtResource("2_leamy")
+autoplay = true
+parameters/looping = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=776247798]
+offset_left = 5.0
+offset_top = 9.000001
+offset_right = 327.46844
+offset_bottom = 139.14217
+scale = Vector2(1.0140527, 1.0142754)
+theme = ExtResource("2_721jg")
+text = "Behind          the
+             mask"
+
+[node name="Label" type="Label" parent="." unique_id=895737691]
+offset_left = -355.0
+offset_top = -92.0
+offset_right = -214.0
+offset_bottom = -1.0
+text = "Behind the"
+
+[node name="Label" type="Label" parent="Label" unique_id=154015292]
+layout_mode = 0
+offset_left = -283.0
+offset_top = -23.0
+offset_right = -142.0
+offset_bottom = 68.0
+text = "Behind the"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=61952681]
+position = Vector2(307, 180.00002)
+scale = Vector2(2.4132264, 0.9955197)
+zoom = Vector2(1.935, 1.935)

@@ -95,7 +95,6 @@ func wait():
 func set_state(new_state: State):
 	if state == new_state:
 		return
-
 	if new_state == State.Idle:
 		state = State.Idle	
 	if new_state == State.Wandering:
@@ -137,7 +136,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	return
+	
 	if state == State.Chasing:
 		var vector =   player.position - position
 		look(vector.normalized()) 

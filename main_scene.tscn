@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://bvqu365vgah84"]
 
-[ext_resource type="PackedScene" uid="uid://ducbjol5rb3np" path="res://scenes/player.tscn" id="1_2c62f"]
+[ext_resource type="PackedScene" uid="uid://ducbjol5rb3np" path="res://scenes/characters/player.tscn" id="1_2c62f"]
 [ext_resource type="Texture2D" path="res://sprites/Fundo_predios-Sheet.png" id="1_8mm7a"]
 [ext_resource type="Texture2D" path="res://sprites/olDbSj.jpg" id="1_d5x1h"]
-[ext_resource type="PackedScene" uid="uid://o8ef45fl4tdr" path="res://scenes/enemy.tscn" id="2_2c62f"]
+[ext_resource type="PackedScene" uid="uid://o8ef45fl4tdr" path="res://scenes/characters/enemy.tscn" id="2_2c62f"]
 [ext_resource type="Texture2D" uid="uid://by8aivvvk73vk" path="res://sprites/__Attack-ezgif.com-gif-to-sprite-converter.png" id="4_8mm7a"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_2c62f"]

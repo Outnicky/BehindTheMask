@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://by8aivvvk73vk"
-path="res://.godot/imported/__Attack-ezgif.com-gif-to-sprite-converter.png-0fd5e59319375ee8bf138a5af101b59b.ctex"
+uid="uid://dwx2b6qrcv2ne"
+path="res://.godot/imported/ZOIO UAAAA-Sheet.png-012524da98599da677715e93158ddd6a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/__Attack-ezgif.com-gif-to-sprite-converter.png"
-dest_files=["res://.godot/imported/__Attack-ezgif.com-gif-to-sprite-converter.png-0fd5e59319375ee8bf138a5af101b59b.ctex"]
+source_file="res://sprites/frisko/ZOIO UAAAA-Sheet.png"
+dest_files=["res://.godot/imported/ZOIO UAAAA-Sheet.png-012524da98599da677715e93158ddd6a.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c4gs1bkkiu2lu"
-path="res://.godot/imported/_Idle.png-bcf63cbfff5045bff85759d205105025.ctex"
+uid="uid://4in1w435lbj1"
+path="res://.godot/imported/Menu-Sheet.png-e0f8aae7201ae1551daa51a75a4099c3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/_Idle.png"
-dest_files=["res://.godot/imported/_Idle.png-bcf63cbfff5045bff85759d205105025.ctex"]
+source_file="res://sprites/frisko/Menu-Sheet.png"
+dest_files=["res://.godot/imported/Menu-Sheet.png-e0f8aae7201ae1551daa51a75a4099c3.ctex"]
 
 [params]
 
