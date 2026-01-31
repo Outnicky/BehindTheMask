@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ddvvjmfenp5fm"
+path="res://.godot/imported/Morte player(MP3_320K)_1.mp3-576270a4746896cf4f06d35a143c7794.mp3str"
+
+[deps]
+
+source_file="res://sounds/Morte player(MP3_320K)_1.mp3"
+dest_files=["res://.godot/imported/Morte player(MP3_320K)_1.mp3-576270a4746896cf4f06d35a143c7794.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
