@@ -3,6 +3,7 @@ class_name EnemyClass extends CharacterBody2D
 var health = 10
 var attack_dmg = 2
 
+
 const FOV = 5
 const RAYCAST_AMOUNT = 40
 const RAYCAST_DISTANCE = 500

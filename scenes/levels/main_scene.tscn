@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://by8aivvvk73vk" path="res://sprites/__Attack-ezgif.com-gif-to-sprite-converter.png" id="4_43vid"]
 [ext_resource type="PackedScene" uid="uid://b0ht6rusuvcws" path="res://scenes/envy.tscn" id="4_brv2t"]
+[ext_resource type="AudioStream" uid="uid://dm0gukcc1u33d" path="res://sounds/musica fase.ogg" id="4_q46b8"]
 [ext_resource type="PackedScene" uid="uid://ducbjol5rb3np" path="res://scenes/player.tscn" id="5_8hc5g"]
 
 [sub_resource type="GDScript" id="GDScript_d5x1h"]
@@ -56,7 +57,7 @@ position = Vector2(-374, -273)
 
 [node name="Player" parent="." unique_id=687882061 instance=ExtResource("5_8hc5g")]
 unique_name_in_owner = true
-position = Vector2(-621, -81)
+position = Vector2(-624, -423)
 
 [node name="CameraPersonagem" type="Camera2D" parent="Player" unique_id=1414931848]
 position = Vector2(0.80430645, 0.20098257)
@@ -1392,3 +1393,7 @@ collision_mask = 0
 [node name="CollisionShape2DBarreira" type="CollisionShape2D" parent="mapa6/StaticBody2DBarreira2" unique_id=1248455639]
 scale = Vector2(-0.05, -0.05)
 shape = SubResource("RectangleShape2D_quawd")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1983242904]
+stream = ExtResource("4_q46b8")
+autoplay = true

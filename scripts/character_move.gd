@@ -15,6 +15,9 @@ var block_actions = false
 const crouch_speed = 0.2
 var first_frame = false
 @onready var area : Area2D = $AreaSword
+@onready var dash_sfx = $dashsfx as AudioStreamPlayer
+@onready var swing = $swingsfx as AudioStreamPlayer
+@onready var damagesfx = $damagesfx as AudioStreamPlayer
 
 enum Actions {Jump, Attack, Move, Nothing, Dash}
 var action =  Actions.Nothing
@@ -40,6 +43,7 @@ func take_damage(enemy: EnemyClass):
 	var dir = enemy.position - position
 	#velocity.x = -dir.x * push_back_force
 	immune = true
+	damagesfx.play()
 	get_tree().create_timer(immunity_time).timeout.connect(func():
 		immune = false)
 
@@ -75,7 +79,7 @@ func set_action(new_action: Actions):
 			animation_player.play("Fall"))
 	
 	elif new_action == Actions.Move and is_on_floor():
-		animation_player.play("Walk") 
+		animation_player.play("Walk")
 	elif new_action == Actions.Attack:
 		animation_player.play("Attack")
 		block_actions = true
@@ -115,6 +119,7 @@ func get_inputs():
 	if Input.is_action_just_pressed("dash") and can_dash:
 		can_dash = false
 		dashing = true
+		dash_sfx.play()
 		$dash_timer.start()	
 		$dash_again_timer.start()	
 	if Input.is_action_pressed("crouch") and (crouching == false):
@@ -134,6 +139,7 @@ func get_inputs():
 		walk_right = 1
 	
 	if Input.is_action_pressed("attack") and !action == Actions.Attack :
+		swing.play()
 		if (action != Actions.Attack):
 			set_action(Actions.Attack)
 			for body in area.get_overlapping_areas():
