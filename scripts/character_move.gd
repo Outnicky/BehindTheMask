@@ -34,8 +34,8 @@ const push_back_force = 100
 const immunity_time = 1
 var immune = false
 func take_damage(enemy: EnemyClass):
-	print('damagaea ')
-	if immune:
+	if immune or dashing:
+		print("PARRIED! EZ!")
 		return
 	var dir = enemy.position - position
 	#velocity.x = -dir.x * push_back_force
@@ -44,7 +44,7 @@ func take_damage(enemy: EnemyClass):
 		immune = false)
 
 	health -= enemy.attack_dmg
-	print('Player take damagead')
+	print("TOOK DMG")
 	var tween = get_tree().create_tween()
 	push = -900
 	tween.tween_property(self, "push", 0, 0.3)

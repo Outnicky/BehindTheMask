@@ -150,7 +150,7 @@ size = Vector2(77, 38)
 size = Vector2(88.09521, 116)
 
 [node name="Envy" type="CharacterBody2D" unique_id=736464493]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_ysyxc")
 
@@ -188,8 +188,7 @@ debug_color = Color(0, 0.5584138, 0.88937813, 0.41960785)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=681600394]
 scale = Vector2(0.8400002, 0.9199996)
-collision_layer = 4
-collision_mask = 4
+collision_layer = 0
 collision_priority = 2.35
 script = ExtResource("3_j5kme")
 

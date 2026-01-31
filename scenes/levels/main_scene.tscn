@@ -56,7 +56,7 @@ position = Vector2(-374, -273)
 
 [node name="Player" parent="." unique_id=687882061 instance=ExtResource("5_8hc5g")]
 unique_name_in_owner = true
-position = Vector2(741, 642)
+position = Vector2(-621, -81)
 
 [node name="CameraPersonagem" type="Camera2D" parent="Player" unique_id=1414931848]
 position = Vector2(0.80430645, 0.20098257)
