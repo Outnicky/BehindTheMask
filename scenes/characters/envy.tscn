@@ -148,13 +148,12 @@ collision_mask = 2
 script = ExtResource("1_ysyxc")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=396433055]
-position = Vector2(0, 4.0000005)
 scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_x8erh")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.8958126
-offset = Vector2(-36.999996, -5.333331)
+frame_progress = 0.38057208
+offset = Vector2(-2.3333282, -5.333331)
 
 [node name="ground_left" type="Area2D" parent="." unique_id=920225210]
 position = Vector2(-103, 37)
@@ -162,7 +161,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_left" unique_id=1754828753]
-position = Vector2(2, 22)
+position = Vector2(51, 25)
 shape = SubResource("RectangleShape2D_s34bp")
 
 [node name="ground_right" type="Area2D" parent="." unique_id=2066870234]
@@ -172,11 +171,10 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ground_right" unique_id=74095479]
-position = Vector2(2, 22)
+position = Vector2(32, 23)
 shape = SubResource("RectangleShape2D_s34bp")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1824679180]
-position = Vector2(-41, 2)
 shape = SubResource("RectangleShape2D_j5kme")
 debug_color = Color(0, 0.5584138, 0.88937813, 0.41960785)
 
@@ -187,6 +185,10 @@ collision_priority = 2.35
 script = ExtResource("3_j5kme")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1043735915]
-position = Vector2(-51.190464, 5.0869474)
 shape = SubResource("RectangleShape2D_ve060")
 debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
+
+[node name="Attack" type="Node2D" parent="." unique_id=422190068]
+position = Vector2(-83, -33)
+
+[node name="RayCast2D" type="RayCast2D" parent="Attack" unique_id=667316928]
