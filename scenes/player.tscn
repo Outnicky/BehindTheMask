@@ -234,19 +234,24 @@ shape = SubResource("RectangleShape2D_fjrip")
 debug_color = Color(0.69699055, 0.48457056, 0.27732903, 0.41960785)
 
 [node name="AreaSword" type="Area2D" parent="." unique_id=1490916543]
-position = Vector2(0.09135076, -0.1509357)
 scale = Vector2(0.013891259, 0.010736034)
-collision_layer = 4
+collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="AreaSword" unique_id=285508822]
-position = Vector2(9.364009, 3.6387858)
+position = Vector2(18.068142, -10.608212)
 scale = Vector2(0.9999998, 0.99999976)
 shape = SubResource("RectangleShape2D_0f027")
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=751572113]
-visible = false
-target_position = Vector2(-0.091268815, 2.9343457)
+position = Vector2(-0.06274731, -0.16078606)
+target_position = Vector2(0, -0.24117911)
+collision_mask = 2
+
+[node name="RayCast2D2" type="RayCast2D" parent="." unique_id=1086735047]
+position = Vector2(0.06845161, -0.16078606)
+target_position = Vector2(0, -0.24117911)
+collision_mask = 2
 
 [connection signal="timeout" from="dash_again_timer" to="." method="_on_dash_again_timer_timeout"]
 [connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]

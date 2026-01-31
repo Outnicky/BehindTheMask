@@ -4,13 +4,15 @@ class_name Player extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY =-500.0
 const Dash_Speed = 900.0
+var walk_right = 1
+var walk_left = -1
 var double_jump = true
 var dashing = false 
 var can_dash = true	
 var crouching = false
 var direction = 0
 var block_actions = false
-
+const crouch_speed = 0.2
 var first_frame = false
 @onready var area : Area2D = $AreaSword
 
@@ -86,7 +88,7 @@ func set_action(new_action: Actions):
 func get_inputs():
 	var vectory = Vector2.ZERO
 	var jumping = false
-	direction = 0
+	var new_direction = 0
 	if Input.is_action_just_pressed("jump"):
 		if is_on_floor(): 
 			set_action(Actions.Jump)
@@ -102,11 +104,11 @@ func get_inputs():
 	if Input.is_action_pressed("left"):
 		if is_on_floor() and !jumping:
 			set_action(Actions.Move)
-		direction = -1
+		new_direction = walk_left
 	elif Input.is_action_pressed("right"):
 		if is_on_floor() and !jumping:
 			set_action(Actions.Move)
-		direction = 1
+		new_direction = walk_right
 	else:
 		if !jumping and velocity == Vector2.ZERO:
 			set_action(Actions.Nothing)
@@ -119,36 +121,51 @@ func get_inputs():
 		velocity.y = -JUMP_VELOCITY
 		$CrouchingShape.disabled = false
 		$CollisionShape2D.disabled = true
-		if Input.is_action_pressed("left"):
-			direction = -0.2
-		if Input.is_action_pressed("right"):
-			direction = 0.2
-#	elif ($RayCast2D.is_colliding() == false and $RayCast2D2.is_colliding() == false and is_on_floor()):
+		walk_left = -0.2
+		walk_right = 0.2
+		#if Input.is_action_pressed("left"):
+			#new_direction = -0.2
+		#if Input.is_action_pressed("right"):
+			#new_direction = 0.2
+	elif ($RayCast2D.is_colliding() == false and $RayCast2D2.is_colliding() == false and is_on_floor()):
 		$CrouchingShape.disabled = true
 		$CollisionShape2D.disabled = false
+		walk_left = -1
+		walk_right = 1
 	
 	if Input.is_action_pressed("attack") and !action == Actions.Attack :
-	
-		set_action(Actions.Attack)
-		
-		for body in area.get_overlapping_bodies():
-			if body is EnemyHitbox:
-					body.take_damage(2)	
+		if (action != Actions.Attack):
+			set_action(Actions.Attack)
+			for body in area.get_overlapping_areas():
+				print("area")
+				if body is EnemyHitbox:
+						body.take_damage(2)	
 					
 	if action != Actions.Move and jumping:
 		set_action(Actions.Jump)
-	if direction!= 0:
-		if dashing :
-			velocity.x = direction * Dash_Speed 
+	if new_direction!= 0:
+		if dashing:
+			velocity.x = new_direction * Dash_Speed 
 		else:
-			velocity.x = direction * SPEED				
+			velocity.x = new_direction * SPEED				
 	else:
 		velocity.x = 0	
-		
+	
+	if new_direction == direction:
+		return
+	var col = area.get_child(0)
+	if new_direction < 0:
+		animation_player.flip_h = true
+		if col.position.x >=0:
+			col.position.x *=-1
+	if new_direction > 0:
+		animation_player.flip_h = false
+		if col.position.x <=0:
+			col.position.x *=-1
+	direction = new_direction
 	first_frame = false
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
 	first_frame = true
 	if not is_on_floor():
 		velocity += get_gravity() * delta

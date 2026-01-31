@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://xoo1lvujfdrg"]
 
-[ext_resource type="Texture2D" path="res://sprites/Fundo_predios-Sheet.png" id="3_q46b8"]
 [ext_resource type="Texture2D" uid="uid://by8aivvvk73vk" path="res://sprites/__Attack-ezgif.com-gif-to-sprite-converter.png" id="4_43vid"]
-[ext_resource type="PackedScene" path="res://scenes/envy.tscn" id="4_brv2t"]
+[ext_resource type="PackedScene" uid="uid://b0ht6rusuvcws" path="res://scenes/envy.tscn" id="4_brv2t"]
 [ext_resource type="PackedScene" uid="uid://ducbjol5rb3np" path="res://scenes/player.tscn" id="5_8hc5g"]
 
 [sub_resource type="GDScript" id="GDScript_d5x1h"]
@@ -57,7 +56,7 @@ position = Vector2(-374, -273)
 
 [node name="Player" parent="." unique_id=687882061 instance=ExtResource("5_8hc5g")]
 unique_name_in_owner = true
-position = Vector2(863, 713)
+position = Vector2(741, 642)
 
 [node name="CameraPersonagem" type="Camera2D" parent="Player" unique_id=1414931848]
 position = Vector2(0.80430645, 0.20098257)
@@ -75,15 +74,12 @@ position = Vector2(591, 0)
 
 [node name="FundoPrediosSheet2" type="Sprite2D" parent="fundo" unique_id=1573261652]
 position = Vector2(10072, -953)
-texture = ExtResource("3_q46b8")
 
 [node name="FundoPrediosSheet3" type="Sprite2D" parent="fundo" unique_id=531268739]
 position = Vector2(11272, -951)
-texture = ExtResource("3_q46b8")
 
 [node name="FundoPrediosSheet4" type="Sprite2D" parent="fundo" unique_id=673866555]
 position = Vector2(8880, -951)
-texture = ExtResource("3_q46b8")
 
 [node name="plataformaPerfeita" type="Sprite2D" parent="." unique_id=97631169]
 visible = false
