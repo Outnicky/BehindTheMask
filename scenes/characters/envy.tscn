@@ -155,7 +155,7 @@ scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_x8erh")
 animation = &"Attack"
 autoplay = "Idle"
-frame_progress = 0.9258362
+frame_progress = 0.29624742
 offset = Vector2(-2.3333282, -5.333331)
 
 [node name="ground_left" type="Area2D" parent="." unique_id=920225210]
@@ -207,3 +207,6 @@ position = Vector2(-113.37864, -40.170166)
 scale = Vector2(0.9999999, 1)
 shape = SubResource("RectangleShape2D_j7ygi")
 debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
+
+[node name="Line2D" type="Line2D" parent="Attack" unique_id=90143871]
+width = 2.0

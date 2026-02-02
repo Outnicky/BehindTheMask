@@ -19,7 +19,7 @@ var first_frame = false
 @onready var damagesfx = $damagesfx as AudioStreamPlayer
 @onready var perfectdodgesfx = $perfectdodgesfx as AudioStreamPlayer
 
-enum Actions {Jump, Attack, Move, Nothing, Dash}
+enum Actions {Jump, Attack, Move, Nothing, Dash, Fall}
 var action =  Actions.Nothing
 var taking_damage = false
 var health = 10
@@ -56,7 +56,9 @@ func take_damage(enemy: EnemyClass):
 	tween.tween_property(self, "push", 0, 0.3)
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	if health <= 0:
-		queue_free()
+		$CameraPersonagem/WhatsAppImage20260131At8_50_15Am.visible = true
+		
+		#queue_free()
 func _process(delta: float) -> void:
 	get_inputs()
 
@@ -77,10 +79,12 @@ func set_action(new_action: Actions):
 		return
 	if new_action == Actions.Jump:
 		animation_player.play("Jump")
-		animation_player.animation_finished.connect(func():
-			animation_player.play("Fall"))
+	elif new_action == Actions.Fall:
+		animation_player.play("Fall")
 	
 	elif new_action == Actions.Move and is_on_floor():
+		if crouching:
+			animation_player.play("Dash")
 		animation_player.play("Walk")
 	elif new_action == Actions.Attack:
 		animation_player.play("Attack")
@@ -88,6 +92,8 @@ func set_action(new_action: Actions):
 		animation_player.animation_finished.connect(func():
 				block_actions = false)
 	elif new_action == Actions.Nothing and is_on_floor():
+		if crouching:
+			animation_player.play("Crouch")
 		animation_player.play("Idle")
 	action = new_action
 	
@@ -119,6 +125,8 @@ func get_inputs():
 		if !jumping and velocity == Vector2.ZERO:
 			set_action(Actions.Nothing)
 	if Input.is_action_just_pressed("dash") and can_dash:
+		set_action(Actions.Dash)
+
 		can_dash = false
 		dashing = true
 		dash_sfx.play()
@@ -176,6 +184,7 @@ func get_inputs():
 func _physics_process(delta: float) -> void:
 	first_frame = true
 	if not is_on_floor():
+		set_action(Actions.Jump)
 		velocity += get_gravity() * delta
 	if is_on_floor():
 		double_jump = true

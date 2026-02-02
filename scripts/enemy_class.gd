@@ -19,7 +19,7 @@ var direction =1
 var timer_wait : Timer
 var timer_walk : Timer
 var timer_lose_sight: Timer
-
+var block_animation= false
 
 enum State {Idle, Wandering, Chasing, Attacking}
 var state = State.Idle
@@ -94,8 +94,9 @@ func wait():
 			
 	
 func set_state(new_state: State):
-	if state == new_state:
+	if state == new_state or block_animation:
 		return
+		
 	if new_state == State.Idle:
 		$AnimatedSprite2D.play('Idle')
 		state = State.Idle	
@@ -108,6 +109,12 @@ func set_state(new_state: State):
 	if new_state == State.Attacking:
 		state = State.Attacking
 		$AnimatedSprite2D.play('Attack')
+		block_animation = true
+		
+		var a: AnimatedSprite2D = $AnimatedSprite2D
+		a.animation_finished.connect(func():
+			block_animation= false
+			)
 
 	
 

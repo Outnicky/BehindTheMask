@@ -14,3 +14,13 @@ func _physics_process(delta: float) -> void:
 		if  c.position.x <0:
 			for body in get_children():
 				body.position.x *=-1
+
+
+	
+
+func _on_body_entered(body: Node2D) -> void:
+	if body is Player:
+		var s = $".."
+		$"..".set_state(s.State.Attacking)
+		body.take_damage($"..")
+	pass # Replace with function body.

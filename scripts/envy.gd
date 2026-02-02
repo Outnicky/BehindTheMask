@@ -21,19 +21,24 @@ func shoot(direction:Vector2):
 		target_distance = vec.x
 	var line = Line2D.new()
 	line.width = 2
+	line.show()
+	get_tree().create_timer(0.1).timeout.connect(func():
+		state = State.Chasing
+		line.hide()
+		)
+	
 	attack.add_child(line)
 	line.add_point(Vector2(traveled_distance, 0))
-	traveled_distance +=bullet_size
-	if traveled_distance > target_distance:
-		traveled_distance = target_distance
-		line.add_point(Vector2(traveled_distance, 0 ))
-		set_state(State.Chasing)
+	line.add_point(Vector2(traveled_distance, target_distance))
+
 		
 	
 
 func _process(delta: float) -> void:
 	flip_character()
 	shoot(Vector2(1,0))
+	#if state
+	
 	
 
 
