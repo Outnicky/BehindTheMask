@@ -15,10 +15,6 @@ run/main_scene="uid://csss0onr5lh0j"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
-[display]
-
-window/size/viewport_height=640
-
 [global_group]
 
 enemies=""

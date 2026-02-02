@@ -304,27 +304,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
-size = Vector2(0.17768529, 0.024111904)
+size = Vector2(0.18999997, 0.26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0f027"]
 size = Vector2(19.589754, 7.1023254)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=687882061]
-scale = Vector2(175.30632, 149.26666)
 disable_mode = 2
 collision_mask = 6
 script = ExtResource("1_qhqgy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1628058000]
-position = Vector2(-0.0016043865, 0.026651157)
-scale = Vector2(0.9201399, 0.7422734)
+position = Vector2(-4.5, 4.4999995)
+scale = Vector2(121.41615, 27.432228)
 shape = ExtResource("2_fjrip")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=252318263]
 texture_filter = 1
-scale = Vector2(0.005, 0.005)
 sprite_frames = SubResource("SpriteFrames_gyfs4")
-animation = &"Crouch"
+animation = &"Idle"
 offset = Vector2(-1.1408602, -1.1920929e-06)
 
 [node name="dash_again_timer" type="Timer" parent="." unique_id=1966210659]
@@ -339,9 +337,8 @@ one_shot = true
 scale = Vector2(0.005704301, 0.0066994196)
 
 [node name="CrouchingShape" type="CollisionShape2D" parent="." unique_id=485644378]
-position = Vector2(0.0042782133, 0.10719071)
-rotation = -3.1415925
-scale = Vector2(1.1717738, -3.3341637)
+position = Vector2(-4.500001, 15.999999)
+scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_fjrip")
 debug_color = Color(0.69699055, 0.48457056, 0.27732903, 0.41960785)
 

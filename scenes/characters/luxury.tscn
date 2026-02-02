@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cwllhlwu7blox"]
 
-[ext_resource type="Script" uid="uid://bqoq7daq5r42h" path="res://scripts/luxury.gd" id="1_43d1n"]
+[ext_resource type="Script" path="res://scripts/luxury.gd" id="1_43d1n"]
 [ext_resource type="Texture2D" uid="uid://k44oanl2bf6t" path="res://sprites/frisko/luxury-Sheet.png" id="1_oo4my"]
 [ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/enemy_hitbox.gd" id="2_43d1n"]
-[ext_resource type="Script" uid="uid://b17bnsr48nemm" path="res://scripts/attack.gd" id="4_8u85l"]
+[ext_resource type="Script" path="res://scripts/attack.gd" id="4_8u85l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8gj6"]
 atlas = ExtResource("1_oo4my")
@@ -128,7 +128,6 @@ collision_mask = 2
 script = ExtResource("1_43d1n")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1639911231]
-scale = Vector2(0.67, 0.67)
 sprite_frames = SubResource("SpriteFrames_8u85l")
 animation = &"Attack"
 autoplay = "Idle"
