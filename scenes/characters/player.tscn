@@ -322,7 +322,8 @@ shape = ExtResource("2_fjrip")
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=252318263]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gyfs4")
-animation = &"Idle"
+animation = &"Dash"
+frame = 8
 offset = Vector2(-1.1408602, -1.1920929e-06)
 
 [node name="dash_again_timer" type="Timer" parent="." unique_id=1966210659]
