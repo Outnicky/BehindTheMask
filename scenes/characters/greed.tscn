@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d3iomssxlxm3c"]
 
 [ext_resource type="Texture2D" uid="uid://dwx2b6qrcv2ne" path="res://sprites/frisko/ZOIO UAAAA-Sheet.png" id="1_6y5ai"]
-[ext_resource type="Script" uid="uid://momwxxbanvjp" path="res://scripts/greed.gd" id="1_483m1"]
-[ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/enemy_hitbox.gd" id="2_483m1"]
-[ext_resource type="Script" uid="uid://b17bnsr48nemm" path="res://scripts/attack.gd" id="4_tpf3e"]
+[ext_resource type="Script" uid="uid://momwxxbanvjp" path="res://scripts/entities/enemies/greed.gd" id="1_483m1"]
+[ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/entities/enemies/components/enemy_hitbox.gd" id="2_483m1"]
+[ext_resource type="Script" path="res://scripts/attack.gd" id="4_tpf3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1akd"]
 atlas = ExtResource("1_6y5ai")
@@ -246,7 +246,6 @@ script = ExtResource("1_483m1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=927683031]
 position = Vector2(-2, 2)
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_hfxsd")
 animation = &"Attack1"
 autoplay = "Idle"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://csss0onr5lh0j"]
 
 [ext_resource type="Texture2D" uid="uid://4in1w435lbj1" path="res://sprites/frisko/Menu-Sheet.png" id="1_fsby3"]
-[ext_resource type="Script" uid="uid://bq52stmadti1k" path="res://scripts/main_menu.gd" id="1_geflf"]
+[ext_resource type="Script" uid="uid://bq52stmadti1k" path="res://scripts/ui/main_menu.gd" id="1_geflf"]
 [ext_resource type="Theme" uid="uid://tae35at22dh7" path="res://fonts/font_theme.tres" id="2_721jg"]
 [ext_resource type="AudioStream" uid="uid://b1lq1kioyg6og" path="res://music/tema menu.ogg" id="2_leamy"]
 

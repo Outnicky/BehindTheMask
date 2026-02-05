@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://cwllhlwu7blox"]
 
-[ext_resource type="Script" path="res://scripts/luxury.gd" id="1_43d1n"]
+[ext_resource type="Script" uid="uid://bqoq7daq5r42h" path="res://scripts/entities/enemies/luxury.gd" id="1_43d1n"]
 [ext_resource type="Texture2D" uid="uid://k44oanl2bf6t" path="res://sprites/frisko/luxury-Sheet.png" id="1_oo4my"]
-[ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/enemy_hitbox.gd" id="2_43d1n"]
+[ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/entities/enemies/components/enemy_hitbox.gd" id="2_43d1n"]
 [ext_resource type="Script" path="res://scripts/attack.gd" id="4_8u85l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h8gj6"]
@@ -154,7 +154,7 @@ position = Vector2(-19, 7)
 shape = SubResource("RectangleShape2D_gycsm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=994352884]
-position = Vector2(-4.9852886, 3.5)
+position = Vector2(-4, 4)
 scale = Vector2(1.0924358, 1)
 shape = SubResource("RectangleShape2D_naiux")
 debug_color = Color(0, 0.5584138, 0.88937813, 0.41960785)
@@ -162,7 +162,8 @@ debug_color = Color(0, 0.5584138, 0.88937813, 0.41960785)
 [node name="Area2D" type="Area2D" parent="." unique_id=1355191918]
 position = Vector2(36, 0)
 scale = Vector2(0.8400002, 0.9199996)
-collision_layer = 0
+collision_layer = 4
+collision_mask = 0
 collision_priority = 2.35
 script = ExtResource("2_43d1n")
 

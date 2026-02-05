@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://b0ht6rusuvcws"]
 
-[ext_resource type="Script" uid="uid://b1fx3g2u5ywir" path="res://scripts/envy.gd" id="1_ysyxc"]
+[ext_resource type="Script" uid="uid://b1fx3g2u5ywir" path="res://scripts/entities/enemies/envy.gd" id="1_ysyxc"]
 [ext_resource type="Texture2D" uid="uid://bxy83t1qpc80e" path="res://sprites/frisko/Envy-Sheet-Sheet.png" id="2_j5kme"]
-[ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/enemy_hitbox.gd" id="3_j5kme"]
+[ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/entities/enemies/components/enemy_hitbox.gd" id="3_j5kme"]
+[ext_resource type="Script" uid="uid://butnjk2g0ouw2" path="res://scripts/entities/player/components/player_audio_manager.gd" id="4_50ish"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nh6n"]
 atlas = ExtResource("2_j5kme")
@@ -210,3 +211,6 @@ debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
 
 [node name="Line2D" type="Line2D" parent="Attack" unique_id=90143871]
 width = 2.0
+
+[node name="AudioManager" type="Node" parent="." unique_id=1136688330]
+script = ExtResource("4_50ish")
