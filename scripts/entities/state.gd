@@ -1,12 +1,17 @@
 class_name State extends RefCounted
 
+
+enum Result { PASS, CONSUMED }
 var entity : Entity
 var animation_ended = false
 var new_state :State
-
+var dir: Vector2 = Vector2.ZERO
+var block_movement = false
+var only_primary = false
 
 func _init(e):
 	self.entity = e 
+	
 func setup(opts: Dictionary = {}) -> State:
 	return self
 func get_name()-> String:
@@ -20,22 +25,27 @@ func get_next_state()-> State:
 			return new_state
 	return self
 
-func _swap(classname, state):
-	if get_script() == classname:
-		return
-	if !state.can_swap_into():
-		return
+
+
+
+func swap(state) -> bool:
+	if self == state:
+		return false
+	if !state.canswap_into():
+		return false
 	if !self.is_over():
 		new_state =  state
+		return false
 	else:
 		entity.change_state(state)
-func move():
-	pass
-func idle():
-	pass
-func take_damage(enemy):
-	pass
+		return true
+
+
+		
 	
+func handle_input(event)-> Result:
+	return Result.PASS
+
 func change_if_over():
 	if is_over() :
 		if new_state:
@@ -61,3 +71,20 @@ func can_swap_into():
 	
 func is_over() -> bool:
 	return animation_ended
+
+func move(delta):
+	entity.velocity.x = 0
+
+func update(delta):
+	entity.apply_gravity(delta)
+	move(delta)
+	
+	
+
+func _equals(other: Object) -> bool:
+	if other == null:
+		return false
+	if other.get_script() != get_script():
+		return false
+
+	return get_name() == other.get_name()

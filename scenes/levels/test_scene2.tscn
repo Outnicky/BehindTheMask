@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://btpgidxww6sq5"]
+
+[ext_resource type="PackedScene" uid="uid://ducbjol5rb3np" path="res://scenes/characters/player.tscn" id="1_w8tvi"]
+[ext_resource type="Texture2D" uid="uid://e8tnsx0fce8y" path="res://sprites/pretos5.png" id="2_xl0ad"]
+[ext_resource type="PackedScene" uid="uid://kms544s7776v" path="res://scenes/ui.tscn" id="3_qs2y6"]
+[ext_resource type="Texture2D" uid="uid://b2b4jkepypb4d" path="res://sprites/WhatsApp Image 2026-01-31 at 8.50.15 AM.jpeg" id="4_76yws"]
+[ext_resource type="PackedScene" uid="uid://cwllhlwu7blox" path="res://scenes/characters/luxury.tscn" id="5_qs2y6"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_xdqlr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dkuvb"]
+size = Vector2(1.0043509, 1.0125941)
+
+[node name="TestScene" type="Node2D" unique_id=423691829]
+
+[node name="rigPlataforma2" type="StaticBody2D" parent="." unique_id=449641400]
+position = Vector2(446.99997, 289)
+scale = Vector2(655.5, 56.5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="plataforma" type="Sprite2D" parent="rigPlataforma2" unique_id=1393487935]
+texture = SubResource("CanvasTexture_xdqlr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rigPlataforma2" unique_id=1114460368]
+position = Vector2(0.007359326, -0.0069773197)
+shape = SubResource("RectangleShape2D_dkuvb")
+
+[node name="Player" parent="." unique_id=687882061 node_paths=PackedStringArray("lamp") instance=ExtResource("1_w8tvi")]
+unique_name_in_owner = true
+position = Vector2(404, 160)
+lamp = NodePath("CameraPersonagem/CanvasLayer/Ui")
+
+[node name="CameraPersonagem" type="Camera2D" parent="Player" unique_id=1001728599]
+use_parent_material = true
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Player/CameraPersonagem" unique_id=942146127]
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/CameraPersonagem/CanvasLayer" unique_id=1452648201]
+position = Vector2(576, 320)
+scale = Vector2(1.0971428, 1)
+texture = ExtResource("2_xl0ad")
+
+[node name="Ui" parent="Player/CameraPersonagem/CanvasLayer" unique_id=441399968 instance=ExtResource("3_qs2y6")]
+
+[node name="WhatsAppImage20260131At8_50_15Am" type="Sprite2D" parent="Player/CameraPersonagem" unique_id=535985667]
+visible = false
+visibility_layer = 1023
+texture = ExtResource("4_76yws")
+
+[node name="rigPlataforma3" type="StaticBody2D" parent="." unique_id=1585076153]
+position = Vector2(738, 125)
+scale = Vector2(655.5, 56.5)
+collision_layer = 2
+collision_mask = 0
+
+[node name="plataforma" type="Sprite2D" parent="rigPlataforma3" unique_id=88428228]
+texture = SubResource("CanvasTexture_xdqlr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rigPlataforma3" unique_id=1741274729]
+position = Vector2(0.007359326, -0.0069773197)
+shape = SubResource("RectangleShape2D_dkuvb")
+
+[node name="Luxury" parent="." unique_id=1034526165 instance=ExtResource("5_qs2y6")]
+position = Vector2(592, 42)

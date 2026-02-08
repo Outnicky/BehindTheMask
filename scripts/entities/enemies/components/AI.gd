@@ -6,21 +6,23 @@ var action = Actions.Wonder
 func _init(enemy):
 	e = enemy
 func wonder():
-	e.state.move()
+	e.state_machine.set_new_state(Move.new(e))
+#	e.state.move()
 	#enemy.chanset_state(State.Wandering)
-	var multipier = randf_range(0.5, 1)
+	
 	if !e.has_floor(e.ground_right):
 		e.direction = -1 
 	elif !e.has_floor(e.ground_left): 
 		e.direction = 1
 	else:
 		e.direction = [-1, 1].pick_random()		
+	e.state_machine.set_new_state(Move.new(e).setup({"dir": Vector2(e.direction, 0)}))
 	e.velocity.x  = e.direction * e.SPEED 
 	e.timer_walk.wait_time = e.get_walk_time()
 	e.timer_walk.start()
 	e.timer_walk.timeout.connect(wait)
 func wait():
-	e.state.idle()
+	e.state_machine.set_new_state(Idle.new(e))
 	e.velocity = Vector2.ZERO
 	e.timer_wait.wait_time =e.get_wait_time()
 	e.timer_wait.start()
@@ -36,7 +38,7 @@ func  look(dir: Vector2):
 		if ray.is_colliding():
 			if ray.get_collider() is Player:
 				pass
-				#e.set_state(State.Chasing)
+				action = Actions.Chase
 				#player_in_vision = true
 		ray.target_position = target
 		ray.position = Vector2.ZERO

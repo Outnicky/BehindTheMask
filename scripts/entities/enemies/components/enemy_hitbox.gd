@@ -1,11 +1,9 @@
-class_name  EnemyHitbox extends Area2D
+class_name  Hitbox extends Area2D
 
-@onready var s = $".."
+@onready var entity: Entity = $".."
 
 func take_damage(amount):
-	s.health -= amount
-	if s.health <= 0:
-		s.queue_free()
+	entity.take_damage(entity)
 
 
 			
