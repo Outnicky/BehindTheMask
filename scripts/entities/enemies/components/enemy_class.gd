@@ -14,7 +14,7 @@ var wait_time
 var wander_time = 300
 const wonder_decrease = 8
 
-var direction =1
+
 var timer_wait : Timer
 var timer_walk : Timer
 var timer_lose_sight: Timer
@@ -25,7 +25,7 @@ var player_in_vision = false
 @onready var ground_left: Area2D =$ground_left
 @onready var ground_right  : Area2D = $ground_right
 var ai: EnemyAi = EnemyAi.new(self)
-var state : EnemyState = EnemyIdle.new(self)
+
 func get_ray():
 	var ray = ray.instantiate()
 	return ray
@@ -35,10 +35,7 @@ func ready():
 
 
 
-func change_state(other:State):
-	state.stop()
-	state = other as EnemyState
-	state.start()
+
 	
 func take_damage(entity):
 	set_health( current_hp -1)
@@ -67,6 +64,7 @@ func has_floor(obj: Area2D)-> bool:
 
 
 func _ready() -> void:
+	super._ready()
 	timer_wait  =  Timer.new()
 	timer_wait.one_shot = true
 	timer_wait.wait_time = get_wait_time()
@@ -116,12 +114,12 @@ func _physics_process(delta: float) -> void:
 	if velocity.x < 0:
 		if !has_floor(ground_left):
 			velocity.x = 0
-
-	
+	if attack_controller.has_overlapping_bodies():
+		state_machine.set_new_state(Attack.new(self))
 	move_and_slide()
 
 func flip_character():
 	var a = direction
 	if a == -1:
 		a = 0
-	$AnimatedSprite2D.flip_h  = a
+	$AnimationController.flip_h  = a

@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b0wfcye8ndopd" path="res://sounds/perfectdodgesfx.wav" id="3_kqtwu"]
 [ext_resource type="AudioStream" uid="uid://ddu2c4px4efhi" path="res://sounds/damagesfx.mp3" id="4_6eyoc"]
 [ext_resource type="Script" uid="uid://butnjk2g0ouw2" path="res://scripts/entities/player/components/player_audio_manager.gd" id="4_eojnx"]
+[ext_resource type="Script" uid="uid://te7mjd5yb7un" path="res://scripts/entities/attack_controller.gd" id="4_qgnko"]
 [ext_resource type="AudioStream" uid="uid://bb1oc8ak2ay22" path="res://sounds/swingsfx.wav" id="5_eojnx"]
 [ext_resource type="AudioStream" uid="uid://b41af52coxwxw" path="res://sounds/dashsfx.wav" id="6_qgnko"]
 
@@ -310,7 +311,7 @@ size = Vector2(0.18999997, 0.26)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0f027"]
 size = Vector2(3655.8257, 1676.5973)
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=687882061]
+[node name="Player" type="CharacterBody2D" unique_id=687882061]
 disable_mode = 2
 collision_mask = 6
 script = ExtResource("1_qhqgy")
@@ -320,7 +321,7 @@ position = Vector2(-4.5, 4.4999995)
 scale = Vector2(121.41615, 27.432228)
 shape = ExtResource("2_fjrip")
 
-[node name="PlayerSprite" type="AnimatedSprite2D" parent="." unique_id=252318263]
+[node name="AnimationController" type="AnimatedSprite2D" parent="." unique_id=252318263]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gyfs4")
 animation = &"Attack"
@@ -343,12 +344,13 @@ scale = Vector2(100, 100)
 shape = SubResource("RectangleShape2D_fjrip")
 debug_color = Color(0.69699055, 0.48457056, 0.27732903, 0.41960785)
 
-[node name="AreaSword" type="Area2D" parent="." unique_id=1490916543]
+[node name="Attack" type="Area2D" parent="." unique_id=1490916543]
 scale = Vector2(0.013891259, 0.010736034)
 collision_layer = 0
 collision_mask = 4
+script = ExtResource("4_qgnko")
 
-[node name="AttackHitbox" type="CollisionShape2D" parent="AreaSword" unique_id=285508822]
+[node name="AttackHitbox" type="CollisionShape2D" parent="Attack" unique_id=285508822]
 position = Vector2(2807.521, 279.43283)
 scale = Vector2(0.9999998, 0.99999976)
 shape = SubResource("RectangleShape2D_0f027")
