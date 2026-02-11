@@ -1,42 +1,65 @@
-class_name StateMachine extends Node
+class_name StateMachine extends RefCounted
 
-var primary_state : State
-var secondary_states : Array[State] = []
-var queue: Array[State] = []
+var state : State
 var entity : Entity
-
-func _init(e):
+var queue : State
+var is_animating = false
+var animation_elapsed = 0
+func _init(e, s):
 	entity = e
-	primary_state = Idle.new(entity)
+	state = s
+	if state:
+		state.attach(entity)
 	
 
-func set_new_state(state):
-	entity.idle = false
-	if primary_state == state:
-		primary_state.dir = state.dir
-		return false
+func add_queue(s):
+	queue =s 
+	
+func new_state(s):
+	s.attach(entity)
+	if state == s:
+		state.dir = s.dir
+		return
 	if !state.can_swap_into():
-		return false
-	if primary_state.is_over():
-		set_primary_state(state) 
-		return false
-	if !primary_state.block_movement and !state.only_primary and state is not Idle:
-		#add_secondary_state(state)
-		state.move(0)
-func set_primary_state(other: State):
-	primary_state.stop()
-	primary_state = other
-	primary_state.start()
-	
-func add_secondary_state(other: State):
-	secondary_states.append(other)	
+		add_queue(s)
+		return
+	if state.is_over():
+		set_state(s) 
+		return
 
 
-func _process(delta: float) -> void:
-	if primary_state.is_over():
-		pass
-func _physics_process(delta: float) -> void:
-	primary_state.update(delta)
-	for s in secondary_states:
-		s.move(delta)
-		secondary_states.erase(s)
+func set_state(other: State):
+	if state:
+		state.stop()
+	state = other
+	is_animating = false
+	#print("new state: ", state)
+#	state.start()
+	#entity.primary_state.on_state_change(self)
+
+func is_blocking_movement():
+	if not state: 
+		return false
+	return state.block_movement
+
+func animate():
+	if is_animating:
+		return
+	else:
+		state.animate()
+		is_animating = true
+		
+func update( delta: float):
+	if not state: 
+		return
+	state.update(delta)
+	#if state.is_over():
+	#	set_state(null)
+	#	return
+
+func update_physics(delta: float):
+	if not state: 
+		return
+	state.update_physics( delta)
+
+	pass

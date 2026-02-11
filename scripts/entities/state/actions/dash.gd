@@ -6,16 +6,20 @@ var dashing_timer = 0
 var dashing_timeout = 0.2
 var dash_cooldown = 1
 var dash_direction = 1
-func _init(e):
-	super._init(e)
+func _init():
 	block_movement = true
 	only_primary = true
-	dash_direction = e.direction
+
+func attach(e):
+	super.attach(e)
+#	dash_direction = e.direction
 func get_name()-> String:
 	return "Dash"
 	
-
+func move(delta):
+	entity.velocity.x = entity.direction * dash_speed
 func is_over() -> bool:
+	#print(dashing_timer)
 	return dashing_timer >= dashing_timeout
 
 func stop():
@@ -36,15 +40,9 @@ func start():
 	#player.velocity.x = player.direction * dash_speed
 
 func update(delta):
-	entity.velocity.x = dash_direction * dash_speed
 	dashing_timer += delta
-	
+	print(dashing_timer)
 		
-func change_if_over():
-	if  dashing_timer> dashing_timeout:
-		if new_state:
-			entity.change_state(new_state)
-	
 
 func take_damage(enemy):
 	entity.audio_manager.play("perfect_dodge")

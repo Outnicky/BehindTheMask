@@ -1,27 +1,29 @@
 class_name Entity extends CharacterBody2D
 
+
+const SPEED = 250
+
 var max_hp := 5
 var current_hp = 0
 var immune = false
-var idle = true
-var can_attack = true
 var animation_player : AnimatedSprite2D
 var audio_manager: AudioManager
 var attack_controller: AttackController
-
 var direction = 1
-var state_machine = StateMachine.new(self)
+var primary_state 
 var move_dir: Vector2
+
+
+func _init() -> void:
+	primary_state = PrimaryState.new(self)
 func set_direction(new_direction):
 	if new_direction == direction:
 		return
 	if new_direction < 0:
 		animation_player.flip_h = true
-		print("turning l ")
 		attack_controller.flip()
 	elif new_direction > 0:
 		animation_player.flip_h = false
-		print("turning r")
 		attack_controller.flip()
 	direction = new_direction
 func _ready() -> void:
@@ -29,7 +31,7 @@ func _ready() -> void:
 	animation_player = $AnimationController
 	audio_manager = $AudioManager
 	attack_controller = $Attack
-	add_child(state_machine)
+	
 	
 
 
@@ -37,8 +39,8 @@ func _ready() -> void:
 func take_damage(entity):
 	if immune:
 		return
-	#Globals.todo("implement take_damage")
-	pass
+	set_health(current_hp-1)
+	print(current_hp)
 
 func set_health(hp):
 	current_hp = hp
@@ -47,6 +49,7 @@ func set_health(hp):
 		on_die()
 		
 func on_die():
+	self.queue_free()
 	return
 func apply_gravity(delta):
 	if not is_on_floor():

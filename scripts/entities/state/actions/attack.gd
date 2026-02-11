@@ -3,8 +3,7 @@ class_name  Attack extends State
 var cooldown = 1
 var dmg = 1
 
-func _init(e):
-	super._init(e)
+func _init():
 	block_movement = false
 	
 

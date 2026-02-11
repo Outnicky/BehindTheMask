@@ -1,4 +1,4 @@
-class_name  Damaged extends State
+class_name  Damaged extends Actions
 
 
 var vector :Vector2
@@ -12,8 +12,8 @@ var other: Entity
 func update(delta):
 	super.update(delta)
 	elapsed += delta
-	move(delta)
-func move(delta):
+
+func move(delta) :
 	entity.velocity.x = -500 * dir.x
 
 func is_over() -> bool:

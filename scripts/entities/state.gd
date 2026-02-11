@@ -4,26 +4,22 @@ class_name State extends RefCounted
 enum Result { PASS, CONSUMED }
 var entity : Entity
 var animation_ended = false
-var new_state :State
 var dir: Vector2 = Vector2.ZERO
 var block_movement = false
 var only_primary = false
+var has_started = false
 
-func _init(e):
-	self.entity = e 
+func attach(e):
+	self.entity = e
 	
-func setup(opts: Dictionary = {}) -> State:
+func setup(x) -> State:
 	return self
 func get_name()-> String:
 	return "Empty State"
 func get_audio_name()-> String:
 	return get_name()
 
-func get_next_state()-> State:
-	if is_over():
-		if new_state:
-			return new_state
-	return self
+
 
 
 
@@ -34,22 +30,18 @@ func swap(state) -> bool:
 	if !state.canswap_into():
 		return false
 	if !self.is_over():
-		new_state =  state
+		#new_state =  state
 		return false
 	else:
 		entity.change_state(state)
 		return true
 
 
-		
+func set_dir(direction)-> State:
+	dir = direction
+	return self
 	
-func handle_input(event)-> Result:
-	return Result.PASS
 
-func change_if_over():
-	if is_over() :
-		if new_state:
-			entity.change_state(new_state)
 
 
 func animate():
@@ -59,9 +51,11 @@ func animate():
 func _on_animation_finish():
 	animation_ended = true
 
+
 func start():
-	animate()
-	entity.audio_manager.play(get_audio_name())
+	pass
+	#animate()
+	#entity.audio_manager.play(get_audio_name())
 
 func stop():
 	entity.animation_player.animation_finished.disconnect(_on_animation_finish)
@@ -72,13 +66,18 @@ func can_swap_into():
 func is_over() -> bool:
 	return animation_ended
 
-func move(delta):
-	entity.velocity.x = 0
+func move( delta):
+	pass
 
 func update(delta):
-	entity.apply_gravity(delta)
+	pass
+
+func update_physics( delta):
+	if !has_started:
+		start()
+		has_started = true
 	move(delta)
-	
+	pass
 	
 
 func _equals(other: Object) -> bool:
