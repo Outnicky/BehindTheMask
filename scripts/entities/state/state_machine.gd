@@ -3,41 +3,37 @@ class_name StateMachine extends RefCounted
 var state : State
 var entity : Entity
 var queue : State
+var default_state
 var is_animating = false
 var animation_elapsed = 0
+
 func _init(e, s):
 	entity = e
 	state = s
-	if state:
-		state.attach(entity)
+	state.attach(entity)
 	
 
 func add_queue(s):
 	queue =s 
 	
-func new_state(s):
-	s.attach(entity)
-	if entity is EnemyClass:
-		pass
-	if state == s:
-		state.dir = s.dir
-		return
-	if !state.can_swap_into():
-		add_queue(s)
-		return
-	if state.is_over():
-		set_state(s) 
-		return
-
-
+func new_state(other: State):
+	other.attach(entity)
+	state.update_from_state(other)
+	var changed = false
+	if other.force_state:
+		set_state(other)
+	if other.can_swap_into():
+		if state.is_over():
+			set_state(other)
+			changed = true
+	if changed == false:
+		add_queue(other)
+			
 func set_state(other: State):
 	state.stop()
 	state = other
 	state.has_started = false
 	is_animating = false
-	#print("new state: ", state)
-#	state.start()
-	#entity.primary_state.on_state_change(self)
 
 func is_blocking_movement():
 	if not state: 
@@ -48,6 +44,10 @@ func is_blocking_movement():
 func stop():
 	is_animating= false
 	state.stop()
+
+func blend_animation(other: StateMachine):
+	state.blend(other.state)
+	
 
 func animate():
 	if is_animating:
@@ -60,6 +60,7 @@ func update( delta: float):
 	if not state: 
 		return
 	state.update(delta)
+	
 	#if state.is_over():
 	#	set_state(null)
 	#	return

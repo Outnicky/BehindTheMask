@@ -1,7 +1,10 @@
 class_name  Move extends Movement
 
 
-
+func update_from_state(other):
+	if other == self:
+		dir = other.dir
+	
 
 func _init(_dir):
 	dir =  _dir
@@ -20,5 +23,5 @@ func start():
 
 
 func is_over() -> bool:
-	return true
+	return false
 	

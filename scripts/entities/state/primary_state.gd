@@ -18,9 +18,10 @@ func new_state(state):
 func update(delta):
 	movememtSM.update(delta)
 	actionsSM.update(delta)
-	if actionsSM.state.is_over():
+	movememtSM.blend_animation(actionsSM)
+	if actionsSM.state.is_over() and actionsSM.state is not Nothing:
 		actionsSM.stop()
-		actionsSM.new_state(Nothing.new())
+		actionsSM.set_state(Nothing.new())
 		movememtSM.animate()
 	else:
 		actionsSM.animate()

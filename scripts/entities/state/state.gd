@@ -8,7 +8,8 @@ var dir: Vector2 = Vector2.ZERO
 var block_movement = false
 var only_primary = false
 var has_started = false
-
+var block_animation = true
+var force_state = false
 func attach(e):
 	self.entity = e
 	
@@ -71,7 +72,13 @@ func move( delta):
 
 func update(delta):
 	pass
+	
+func update_from_state(other)-> State:
+	return self
 
+func blend(other:State):
+	if other.block_animation:
+		pass
 func update_physics( delta):
 	if !has_started:
 		start()

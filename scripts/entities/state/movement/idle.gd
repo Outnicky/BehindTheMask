@@ -3,7 +3,8 @@ class_name Idle extends Movement
 func get_name() -> String:
 	return "Idle"
 
-
+func _init():
+	force_state = true
 func move(delta):
 	entity.apply_gravity(delta)
 	entity.velocity.x = 0
