@@ -17,6 +17,8 @@ func add_queue(s):
 	
 func new_state(s):
 	s.attach(entity)
+	if entity is EnemyClass:
+		pass
 	if state == s:
 		state.dir = s.dir
 		return
@@ -29,9 +31,9 @@ func new_state(s):
 
 
 func set_state(other: State):
-	if state:
-		state.stop()
+	state.stop()
 	state = other
+	state.has_started = false
 	is_animating = false
 	#print("new state: ", state)
 #	state.start()
@@ -41,6 +43,11 @@ func is_blocking_movement():
 	if not state: 
 		return false
 	return state.block_movement
+
+
+func stop():
+	is_animating= false
+	state.stop()
 
 func animate():
 	if is_animating:

@@ -42,7 +42,7 @@ func _ready() -> void:
 	node.position = Vector2.ZERO
 	for i in range(RAYCAST_AMOUNT):
 		node.add_child(ai.get_ray())
-	ai.wonder()
+	#ai.wonder()
 
 func _process(delta: float) -> void:
 	primary_state.new_state(Attack.new())

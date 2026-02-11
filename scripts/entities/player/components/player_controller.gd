@@ -8,9 +8,10 @@ class_name Player extends Entity
 
 var double_jump = false
 var can_dash = false
-var can_attack = false
+
 
 func _init():
+	can_attack = true
 	primary_state = PlayerNormal.new(self)
 func _ready() -> void:
 	max_hp = 5
@@ -32,7 +33,7 @@ func take_damage(enemy: EnemyClass):
 	print(immune )
 	if immune:
 		return
-	primary_state.new_state(Damaged.new().setup({"other": enemy}))
+	primary_state.new_state(Damaged.new(enemy))
 	#state_machine.set_new_state(Damaged.new(self).setup({"other": enemy}))
 
 	

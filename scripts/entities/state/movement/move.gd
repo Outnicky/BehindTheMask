@@ -8,6 +8,7 @@ func _init(_dir):
 
 func move(delta):
 	var s=  entity.SPEED
+	entity.apply_gravity(delta)
 	entity.velocity.x = dir.x  * entity.SPEED
 	entity.set_direction(dir.x)
 func get_name() -> String:

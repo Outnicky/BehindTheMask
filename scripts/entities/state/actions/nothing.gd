@@ -1,4 +1,4 @@
-class_name Nothing extends State
+class_name Nothing extends Actions
 
 func is_over() -> bool:
 	return true

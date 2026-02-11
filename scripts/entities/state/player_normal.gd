@@ -64,21 +64,9 @@ func on_actions_change():
 	if actionsSM.state == null:
 		movememtSM.animate()
 	
-func update(delta):
-	movememtSM.update(delta)
-	actionsSM.update(delta)
-	if actionsSM.state.is_over():
-		actionsSM.new_state(Nothing.new())
-		movememtSM.is_animating = false
-		movememtSM.animate()
-	else:
-		actionsSM.animate()
+
 func update_physics(delta):
-	var velocity_old = entity.velocity
-	entity.apply_gravity(delta)
-	if !actionsSM.is_blocking_movement():
-		movememtSM.update_physics( delta)
-	actionsSM.update_physics(delta)
+	super.update_physics(delta)
 	if crouching:
 		entity.velocity *= entity.CROUCHING_MULTIPLIER 
 	elif running:

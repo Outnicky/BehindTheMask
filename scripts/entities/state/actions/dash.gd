@@ -1,4 +1,4 @@
-class_name Dash extends State
+class_name Dash extends Actions
 
 var dash_speed = 1300
 var dashing := true

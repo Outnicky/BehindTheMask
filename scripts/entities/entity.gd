@@ -3,6 +3,7 @@ class_name Entity extends CharacterBody2D
 
 const SPEED = 250
 
+var can_attack = true
 var max_hp := 5
 var current_hp = 0
 var immune = false

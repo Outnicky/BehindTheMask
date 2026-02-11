@@ -53,11 +53,11 @@ func _on_animation_finish():
 
 
 func start():
-	pass
 	#animate()
-	#entity.audio_manager.play(get_audio_name())
+	entity.audio_manager.play(get_audio_name())
 
 func stop():
+	animation_ended = true
 	entity.animation_player.animation_finished.disconnect(_on_animation_finish)
 
 func can_swap_into():

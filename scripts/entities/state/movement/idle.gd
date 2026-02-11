@@ -5,6 +5,7 @@ func get_name() -> String:
 
 
 func move(delta):
+	entity.apply_gravity(delta)
 	entity.velocity.x = 0
 func is_over() -> bool:
 	return true

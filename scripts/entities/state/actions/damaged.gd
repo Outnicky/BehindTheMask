@@ -9,6 +9,9 @@ var knockback_decelartion = 12
 var current_knockback = 1
 var other: Entity
 
+func _init(e):
+	other = e
+
 func update(delta):
 	super.update(delta)
 	elapsed += delta
@@ -19,14 +22,8 @@ func move(delta) :
 func is_over() -> bool:
 	return elapsed >= immunity_time
 	
-func setup(opts: Dictionary = {}) -> State:
-	other = opts["other"]
-	vector = other.position -  entity.position
-	if vector.x > 0:
-		dir.x = 1
-	else:
-		dir.x = -1
-	return self
+
+	
 
 func get_name() -> String:
 	return "Hurt"
@@ -34,6 +31,11 @@ func get_name() -> String:
 func get_audio_name():
 	return "Damage"
 func start():
+	vector = other.position -  entity.position
+	if vector.x > 0:
+		dir.x = 1
+	else:
+		dir.x = -1
 	super.start()
 	var hp  = entity.current_hp - 1
 	entity.set_health( entity.current_hp - 1)
