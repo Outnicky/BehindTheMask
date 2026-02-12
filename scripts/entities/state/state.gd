@@ -17,7 +17,7 @@ func get_name()-> String:
 func get_audio_name()-> String:
 	return get_name()
 
-func stop():
+func stop(ctx):
 	time_elapsed =0
 	ended = true
 
@@ -29,7 +29,7 @@ func is_over(ctx) -> bool:
 
 
 
-func update(ctx: Context, out: VisualOutput):
+func update_process(ctx: Context, out: VisualOutput):
 	time_elapsed += ctx.delta
 	if !has_started_process:
 		start_process(ctx, out)
@@ -51,6 +51,7 @@ func start_process(ctx, out: VisualOutput):
 	out.sfx_name = get_audio_name()
 	
 func start_physics(ctx, out: PhysicsOutput):
+	dir = ctx.owner.direction
 	pass
 func update_physics(ctx: Context, out: PhysicsOutput):
 	if !has_started_physics:

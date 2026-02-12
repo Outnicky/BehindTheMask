@@ -6,6 +6,7 @@ func get_name() -> String:
 func _init():
 	force_state = true
 func move(ctx, out):
-	out.gravity = ctx.owner.get_gravity()
+	super.move(ctx, out)
+	out.direction.x = 0
 func is_over(ctx) -> bool:
 	return true

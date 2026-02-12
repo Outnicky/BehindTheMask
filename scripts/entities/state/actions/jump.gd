@@ -7,24 +7,16 @@ const jump_cooldown = 0.6
 func get_name() -> String:
 	return "Jump"
 
-func can_swap_into() -> bool:
-	var player = entity as Player
-	return player.double_jump
+func can_swap_into(ctx) -> bool:
+	return ctx.owner.double_jump
 
-func jump(delta):
-	var player = entity as Player
-	entity.velocity.y = JUMP_VELOCITY
-	if !entity.is_on_floor(): 
-		player.double_jump  = false
-	
-func start():
-	super.start()
-	print("jumpu ")
-	jump(1)
-func move( delta):
-	return
-	#jump(delta)
 
+
+func start_physics(ctx, out: PhysicsOutput):
+	if !ctx.owner.is_on_floor():
+		ctx.owner.double_jump  = false
+	out.direction.y = 1
+	out.velocity.y = JUMP_VELOCITY
 
 func update(delta):
 	pass

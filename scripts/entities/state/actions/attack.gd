@@ -3,8 +3,6 @@ class_name  Attack extends Actions
 var cooldown = 1
 var dmg = 1
 
-func _init():
-	block_movement = true
 	
 
 func get_name() -> String:
@@ -13,32 +11,28 @@ func get_name() -> String:
 func get_audio_name()-> String:
 	return "Swing"
 
-func animate():
-	super.animate()
-	print("animating attack")
-func start():
-	super.start()
-	entity.audio_manager.play(get_audio_name())
-	entity.can_attack = false
-	entity.get_tree().create_timer(cooldown).timeout.connect(func():
-		if is_instance_valid(entity):
-			entity.can_attack = true
-		)
 
-func update_physics( delta):
-	super.update_physics(delta)
-	for body  in entity.attack_controller.get_overlapping_areas():
+
+func start_process(ctx: Context, out: VisualOutput):
+	super.start_process(ctx, out)
+	ctx.owner.entity.can_attack = false
+	ctx.owner.get_tree().create_timer(cooldown).timeout.connect(func():
+		if is_instance_valid(ctx.owner):
+			ctx.owner.can_attack = true
+		)
+	
+func move(ctx: Context, out: PhysicsOutput):
+	out.direction.x = 0
+	
+func update_physics(ctx: Context, out: PhysicsOutput):
+	super.update_physics(ctx, out)
+	for body  in ctx.owner.attack_controller.get_overlapping_areas():
 		if body is Hitbox:
 			body.take_damage(1)
-	for body  in entity.attack_controller.get_overlapping_bodies():
-		body.take_damage(entity)
+	for body  in ctx.owner.attack_controller.get_overlapping_bodies():
+		body.take_damage(ctx.owner)
 			
 
 
-func can_swap_into():
-	return entity.can_attack
-
-func update(delta):
-	super.update(delta)
-	print("attacking")
-	
+func can_swap_into(ctx: Context):
+	return ctx.owner.entity.can_attack

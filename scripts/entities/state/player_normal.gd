@@ -25,6 +25,9 @@ func _init(e):
 #}
 #func get_movement(name) -> State:
 	#return movements.get(name)
+
+
+	
 func handle_input(event: InputEvent):
 	if event.is_action_pressed("left"):
 		left = true

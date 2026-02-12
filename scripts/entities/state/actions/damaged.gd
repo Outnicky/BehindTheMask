@@ -12,14 +12,13 @@ var other: Entity
 func _init(e):
 	other = e
 
-func update(delta):
-	super.update(delta)
-	elapsed += delta
 
-func move(delta) :
-	entity.velocity.x = -500 * dir.x
 
-func is_over() -> bool:
+func move(ctx, out): 
+	out.velocity.x = -500 * dir.x
+	
+
+func is_over(ctx) -> bool:
 	return elapsed >= immunity_time
 	
 
@@ -30,21 +29,26 @@ func get_name() -> String:
 
 func get_audio_name():
 	return "Damage"
-func start():
-	vector = other.position -  entity.position
+	
+func start_process(ctx: Context, out: VisualOutput):
+	super.start_process(ctx, out)
+	var hp  = ctx.owner.current_hp - 1
+	ctx.owner.set_health( ctx.owner.current_hp - 1)
+	if ctx.owner.current_hp == 0:
+		return
+	ctx.owner.immune = true
+	ctx.owner.get_tree().create_timer(immunity_time).timeout.connect(func():
+		ctx.owner.immune  = false
+	)
+	pass
+func start_physics(ctx: Context, out: PhysicsOutput):
+	super.start_physics(ctx, out)
+	vector = other.position -  ctx.owner.position
 	if vector.x > 0:
 		dir.x = 1
 	else:
 		dir.x = -1
-	super.start()
-	var hp  = entity.current_hp - 1
-	entity.set_health( entity.current_hp - 1)
-	if entity.current_hp == 0:
-		return
-	entity.immune = true
-	print("immune")
-	entity.get_tree().create_timer(immunity_time).timeout.connect(func():
-		entity.immune  = false
-		print("no longer immune,", entity)
-	)
+	out.direction.x = dir.x
+	
+	
 	

@@ -1,14 +1,10 @@
 class_name Nothing extends Actions
 
-func _init() -> void:
-	block_animation = false
-func is_over() -> bool:
+
+func is_over(ctx) -> bool:
 	return true
-func animate():
+
+func update_process( ctx,out):
 	return
-func update(delta):
-	return
-func update_physics( delta):
-	return
-func stop():
+func update_physics( ctx,out):
 	return
