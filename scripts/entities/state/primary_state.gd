@@ -6,6 +6,7 @@ var actionsSM: StateMachine
 func generate_context(delta):
 	return Context.new(self, delta)
 
+
 func start_process(ctx, out: VisualOutput):
 	movememtSM = StateMachine.new(ctx.owner, Idle.new())
 	actionsSM = StateMachine.new(ctx.owner, Nothing.new())
