@@ -3,8 +3,6 @@ class_name PrimaryState extends State
 var movememtSM: StateMachine 
 var actionsSM: StateMachine
 
-func generate_context(delta):
-	return Context.new(self, delta)
 
 
 func start_process(ctx, out: VisualOutput):
@@ -17,9 +15,9 @@ func new_state(state):
 		actionsSM.new_state(state)
 
 
-func update(delta):
-	movememtSM.update(ctx, out)
-	actionsSM.update(delta)
+func update_process(ctx: Context, out: VisualOutput):
+	movememtSM.state.update_process(ctx, out)
+	actionsSM.state.update_process(ctx, out)
 	movememtSM.blend_animation(actionsSM)
 	if actionsSM.state.is_over() and actionsSM.state is not Nothing:
 		actionsSM.stop()

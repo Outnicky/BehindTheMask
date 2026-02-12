@@ -16,7 +16,7 @@ var move_dir: Vector2
 
 
 func _init() -> void:
-	primary_state = PrimaryState.new(self)
+	primary_state = PrimaryState.new()
 func set_direction(new_direction):
 	if new_direction == direction:
 		return
@@ -33,7 +33,7 @@ func _ready() -> void:
 	audio_manager = $AudioManager
 	attack_controller = $Attack
 	
-	
+
 
 
 

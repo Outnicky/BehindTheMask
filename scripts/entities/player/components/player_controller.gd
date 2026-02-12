@@ -40,7 +40,9 @@ func take_damage(enemy: EnemyClass):
 		
 
 func _process(delta: float) -> void:
-	primary_state.update(delta)
+	var ctx = Context.new(self, delta)
+	var out = PhysicsOutput.new()
+	primary_state.update_process(ctx, out)
 
 func _input(event : InputEvent):
 	primary_state.handle_input(event)
@@ -51,6 +53,9 @@ func apply_gravity(delta):
 
 
 func _physics_process(delta: float) -> void:
+	var ctx = Context.new(self, delta)
+	var out = PhysicsOutput.new()
+	primary_state.update_physics(ctx, out)
 	if is_on_floor():
 		double_jump = true
 	primary_state.update_physics(delta)

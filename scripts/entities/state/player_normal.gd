@@ -9,9 +9,7 @@ var crouching = false
 var left = false
 var right = false
 
-func _init(e):
-	super._init(e)
-	
+
 
 #var movements = {
 #	"Move" : Move.new(),
@@ -68,10 +66,12 @@ func on_actions_change():
 		movememtSM.animate()
 	
 
-func update_physics(delta):
-	super.update_physics(delta)
+func update_physics(ctx : Context, out: PhysicsOutput):
+	super.update_physics(ctx, out)
 	if crouching:
-		entity.velocity *= entity.CROUCHING_MULTIPLIER 
+		out.speed_multiplayer.x = ctx.out.CROUCHING_MULTIPLIER 
 	elif running:
-		entity.velocity *= entity.RUN_MODIFIER 
-		
+		out.speed_multiplayer.x  *= ctx.out.RUN_MODIFIER 
+	
+	ctx.owner.velocity.x = out.direction.x * out.speed_multiplayer.x *out.speed.x
+	ctx.owner.velocity.y = out.direction.y * out.speed_multiplayer.y *out.speed.y * out.gravity
