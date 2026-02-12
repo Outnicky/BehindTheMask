@@ -5,8 +5,7 @@ func get_name() -> String:
 
 func _init():
 	force_state = true
-func move(delta):
-	entity.apply_gravity(delta)
-	entity.velocity.x = 0
-func is_over() -> bool:
+func move(ctx, out):
+	out.gravity = ctx.owner.get_gravity()
+func is_over(ctx) -> bool:
 	return true

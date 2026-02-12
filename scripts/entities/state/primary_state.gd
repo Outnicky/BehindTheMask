@@ -25,8 +25,9 @@ func update(delta):
 		movememtSM.animate()
 	else:
 		actionsSM.animate()
-func update_physics(delta):
+func update_physics(ctx: Context, out: MovementOutput):
 	if !actionsSM.is_blocking_movement():
 		movememtSM.update_physics( delta)
 	actionsSM.update_physics(delta)
+	
 	pass

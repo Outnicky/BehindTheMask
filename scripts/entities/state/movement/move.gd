@@ -2,8 +2,8 @@ class_name  Move extends Movement
 
 
 func update_from_state(other):
-	if other == self:
-		dir = other.dir
+	#if other == self:
+	dir = other.dir
 	
 
 func _init(_dir):

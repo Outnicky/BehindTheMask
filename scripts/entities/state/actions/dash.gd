@@ -17,7 +17,7 @@ func get_name()-> String:
 	return "Dash"
 	
 func move(delta):
-	entity.velocity.x = entity.direction * dash_speed
+	entity.velocity.x = entity.dir  * dash_speed
 func is_over() -> bool:
 	#print(dashing_timer)
 	return dashing_timer >= dashing_timeout

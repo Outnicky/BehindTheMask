@@ -19,10 +19,13 @@ func add_queue(s):
 func new_state(other: State):
 	other.attach(entity)
 	state.update_from_state(other)
+	if state == other:
+		return
 	var changed = false
 	if other.force_state:
 		set_state(other)
-	if other.can_swap_into():
+		changed = true
+	elif other.can_swap_into():
 		if state.is_over():
 			set_state(other)
 			changed = true
@@ -36,8 +39,6 @@ func set_state(other: State):
 	is_animating = false
 
 func is_blocking_movement():
-	if not state: 
-		return false
 	return state.block_movement
 
 
@@ -46,7 +47,11 @@ func stop():
 	state.stop()
 
 func blend_animation(other: StateMachine):
-	state.blend(other.state)
+	if other.state.block_animation:
+		other.animate()
+	else:
+		animate()
+#	state.blend(other.state)
 	
 
 func animate():
@@ -66,8 +71,6 @@ func update( delta: float):
 	#	return
 
 func update_physics(delta: float):
-	if not state: 
-		return
 	state.update_physics( delta)
 
 	pass
