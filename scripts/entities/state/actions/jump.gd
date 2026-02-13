@@ -1,6 +1,6 @@
 class_name  PlayerJump extends Actions
 
-const JUMP_VELOCITY =-450.0
+const JUMP_VELOCITY =600.0
 const jump_time = 0.1
 const jump_cooldown = 0.6
 
@@ -15,8 +15,12 @@ func can_swap_into(ctx) -> bool:
 func start_physics(ctx, out: PhysicsOutput):
 	if !ctx.owner.is_on_floor():
 		ctx.owner.double_jump  = false
-	out.direction.y = 1
-	out.velocity.y = JUMP_VELOCITY
+	out.velocity_multiplier.y =0
+	out.direction.y = -1
+	out.speed.y = JUMP_VELOCITY
 
-func update(delta):
+func update_physics(ctx: Context, out: PhysicsOutput):
+	super.update_physics(ctx,out)
+	if ctx.owner.is_on_floor():
+		ended = true
 	pass

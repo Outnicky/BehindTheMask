@@ -12,14 +12,19 @@ func get_audio_name()-> String:
 	return "Swing"
 
 
+func get_animation_state(ctx, out):
+	out.animation_normal = VisualOutput.AnimationData.new(self, 1, func():
+		print("im over")
+		ended = true)
 
 func start_process(ctx: Context, out: VisualOutput):
 	super.start_process(ctx, out)
-	ctx.owner.entity.can_attack = false
+	ctx.owner.can_attack = false
 	ctx.owner.get_tree().create_timer(cooldown).timeout.connect(func():
 		if is_instance_valid(ctx.owner):
 			ctx.owner.can_attack = true
 		)
+	out.end_state_with_animation_end = true
 	
 func move(ctx: Context, out: PhysicsOutput):
 	out.direction.x = 0
@@ -35,4 +40,4 @@ func update_physics(ctx: Context, out: PhysicsOutput):
 
 
 func can_swap_into(ctx: Context):
-	return ctx.owner.entity.can_attack
+	return ctx.owner.can_attack

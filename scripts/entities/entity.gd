@@ -34,7 +34,16 @@ func _ready() -> void:
 	attack_controller = $Attack
 	
 
-
+func _process(delta: float) -> void:
+	var ctx = Context.new(self, delta)
+	var out = VisualOutput.new()
+	
+	primary_state.update_process(ctx, out)
+func _physics_process(delta: float) -> void:
+	var ctx = Context.new(self, delta)
+	var out = PhysicsOutput.new()
+	out.facing_direction = direction
+	primary_state.update_physics(ctx, out)
 
 
 func take_damage(entity):

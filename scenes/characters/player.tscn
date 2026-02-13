@@ -315,7 +315,6 @@ size = Vector2(3655.8257, 1676.5973)
 disable_mode = 2
 collision_mask = 6
 script = ExtResource("1_qhqgy")
-SPEED = null
 
 [node name="PlayerHitbox" type="CollisionShape2D" parent="." unique_id=1628058000]
 position = Vector2(-4.5, 4.4999995)
@@ -325,7 +324,7 @@ shape = ExtResource("2_fjrip")
 [node name="AnimationController" type="AnimatedSprite2D" parent="." unique_id=252318263]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gyfs4")
-animation = &"Jump"
+animation = &"Attack"
 offset = Vector2(-1.1408602, -1.1920929e-06)
 
 [node name="dash_again_timer" type="Timer" parent="." unique_id=1966210659]

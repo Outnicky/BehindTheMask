@@ -13,8 +13,11 @@ func get_name()-> String:
 	return "Dash"
 	
 func move(ctx, out: PhysicsOutput):
-	out.velocity.x = dash_speed
+	out.velocity_multiplier.x = 0
 	out.direction.x = dir.x
+	out.speed.x = dash_speed
+	out.gravity.y = 0
+	out.facing_direction = dir.x
 func is_over(ctx) -> bool:
 	return time_elapsed >= dashing_timeout
 
@@ -24,9 +27,10 @@ func stop(ctx):
 	
 func can_swap_into(ctx)-> bool:
 	return ctx.owner.can_dash
-func start_process(ctx, out: VisualOutput):
-	super.start_process(ctx, out)
+func start_physics(ctx: Context, out: PhysicsOutput):
+	super.start_physics(ctx, out)
 	var player = ctx.owner as Player
+	dir.x = player.direction
 	player.can_dash = false
 	player.collision_mask = 2
 	player.get_tree().create_timer(dash_cooldown).timeout.connect(func():

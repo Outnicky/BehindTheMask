@@ -64,4 +64,4 @@ position = Vector2(0.007359326, -0.0069773197)
 shape = SubResource("RectangleShape2D_dkuvb")
 
 [node name="Luxury" parent="." unique_id=1034526165 instance=ExtResource("5_qs2y6")]
-position = Vector2(612, 40)
+position = Vector2(612, 47)

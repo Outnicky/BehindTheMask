@@ -11,67 +11,49 @@ var right = false
 
 
 
-#var movements = {
-#	"Move" : Move.new(),
-#	"Idle": Idle.new()
-#}
-#var actions ={
-##	"Junp" : PlayerJump.new(),
-#	"Dash" : Dash.new(),
-#	"Attack" : Attack.new(),
-#	"Damaged": Damaged.new()
-#}
-#func get_movement(name) -> State:
-	#return movements.get(name)
-
-
 	
 func handle_input(event: InputEvent):
 	if event.is_action_pressed("left"):
 		left = true
-		movememtSM.new_state(Move.new(Vector2(-1,0)))
-		#movememtSM.new_state(movements.get("Move").setup(Vector2(-1,0)))
+		new_states.append(Move.new(Vector2(-1,0)))
+		#movememtSM.new_state(Move.new(Vector2(-1,0)))	
 	elif event.is_action_pressed("right"):
 		right = true
-		#get("Move").setup()
-		#movememtSM.new_state(movements.get("Move").setup(Vector2(-1,0)))
-		movememtSM.new_state(Move.new(Vector2(1,0)))
+		new_states.append(Move.new(Vector2(1,0)))
+		#movememtSM.new_state(Move.new(Vector2(1,0)))
 	if event.is_action_released("right") :
 		right = false
 		if !right and !left:
-			movememtSM.new_state(Idle.new())
+			new_states.append(Idle.new())
+			#movememtSM.new_state(Idle.new())
 		else:
-			movememtSM.new_state(Move.new(Vector2(-1,0)))
+			new_states.append(Move.new(Vector2(-1,0)))
 	elif event.is_action_released("left"):
 		left = false
 		if !right and !left:
-			movememtSM.new_state(Idle.new())
+			new_states.append(Idle.new())
 		else:
-			movememtSM.new_state(Move.new(Vector2(1,0)))
+			new_states.append(Move.new(Vector2(1,0)))
 	elif event.is_action_pressed("jump"):
-		actionsSM.new_state(PlayerJump.new())
+		new_states.append(PlayerJump.new())
 	elif event.is_action_pressed("dash"):
-		actionsSM.new_state(Dash.new())
+		new_states.append(Dash.new())
 	elif event.is_action_pressed("crouch"):
 		crouching = true
 	#elif ($RayCast2D.is_colliding() == false and $RayCast2D2.is_colliding() == false and is_on_floor()):
 #		sm.new_state(Dash.new())
 	elif event.is_action_pressed("attack"):
 		#if state.handle_input(Input) == state.Result.PASS:
-		actionsSM.new_state(Attack.new())
+		new_states.append(Attack.new())
 
 
-func on_actions_change():
-	if actionsSM.state == null:
-		movememtSM.animate()
-	
 
 func update_physics(ctx : Context, out: PhysicsOutput):
 	super.update_physics(ctx, out)
+	if actionsSM.state is PlayerJump:
+		pass
 	if crouching:
 		out.speed_multiplayer.x = ctx.out.CROUCHING_MULTIPLIER 
 	elif running:
 		out.speed_multiplayer.x  *= ctx.out.RUN_MODIFIER 
-	
-	ctx.owner.velocity.x = out.direction.x * out.speed_multiplayer.x *out.speed.x
-	ctx.owner.velocity.y = out.direction.y * out.speed_multiplayer.y *out.speed.y * out.gravity
+#	ctx.owner.velocity= out.direction* out.speed_multiplayer *out.speed + out.gravity

@@ -7,12 +7,12 @@ class_name Player extends Entity
 
 
 var double_jump = false
-var can_dash = false
+var can_dash = true
 
 
 func _init():
 	can_attack = true
-	primary_state = PlayerNormal.new(self)
+	primary_state = PlayerNormal.new()
 func _ready() -> void:
 	max_hp = 5
 	super._ready()
@@ -36,13 +36,7 @@ func take_damage(enemy: EnemyClass):
 	primary_state.new_state(Damaged.new(enemy))
 	#state_machine.set_new_state(Damaged.new(self).setup({"other": enemy}))
 
-	
-		
 
-func _process(delta: float) -> void:
-	var ctx = Context.new(self, delta)
-	var out = PhysicsOutput.new()
-	primary_state.update_process(ctx, out)
 
 func _input(event : InputEvent):
 	primary_state.handle_input(event)
@@ -51,14 +45,14 @@ func _input(event : InputEvent):
 func apply_gravity(delta):
 	velocity += get_gravity()  * delta
 
+func _process(delta: float) -> void:
+	super._process(delta)
 
 func _physics_process(delta: float) -> void:
-	var ctx = Context.new(self, delta)
-	var out = PhysicsOutput.new()
-	primary_state.update_physics(ctx, out)
+	super._physics_process(delta)
 	if is_on_floor():
 		double_jump = true
-	primary_state.update_physics(delta)
+	super._physics_process(delta)
 	move_and_slide()
 	
 

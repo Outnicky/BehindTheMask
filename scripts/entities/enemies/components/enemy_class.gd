@@ -43,15 +43,3 @@ func _ready() -> void:
 	for i in range(RAYCAST_AMOUNT):
 		node.add_child(ai.get_ray())
 	#ai.wonder()
-
-func _process(delta: float) -> void:
-	primary_state.new_state(Attack.new())
-
-	primary_state.update(delta)
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	primary_state.update_physics(delta)
-	#ai.update(delta)
-	#if attack_controller.has_overlapping_bodies():
-	#	primary_state.new_state(Attack.new())
-	#move_and_slide()

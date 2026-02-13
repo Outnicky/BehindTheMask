@@ -10,67 +10,46 @@ var animation_elapsed = 0
 func _init(e, s):
 	entity = e
 	state = s
-	state.attach(entity)
 	
 
 func add_queue(s):
 	queue =s 
 	
-func new_state(other: State):
-	other.attach(entity)
-	state.update_from_state(other)
+func new_state(ctx,other: State):
+	if other is Attack:
+		pass
 	if state == other:
+		state.update_from_state(other)
 		return
 	var changed = false
 	if other.force_state:
-		set_state(other)
+		set_state(ctx, other)
 		changed = true
-	elif other.can_swap_into():
-		if state.is_over():
-			set_state(other)
+	elif other.can_swap_into(ctx):
+		if state.is_over(ctx):
+			set_state(ctx, other)
 			changed = true
 	if changed == false:
 		add_queue(other)
 			
-func set_state(other: State):
-	state.stop()
+func set_state(ctx, other: State):
+	print(other.get_script())
+	state.stop(ctx)
 	state = other
-	state.has_started = false
 	is_animating = false
 
 func is_blocking_movement():
 	return state.block_movement
 
 
-func stop():
+func stop(ctx):
 	is_animating= false
-	state.stop()
+	state.stop(ctx)
 
-func blend_animation(other: StateMachine):
-	if other.state.block_animation:
-		other.animate()
-	else:
-		animate()
-#	state.blend(other.state)
+
+
+func update_process(ctx, out):
+	state.update_process(ctx, out)
 	
-
-func animate():
-	if is_animating:
-		return
-	else:
-		state.animate()
-		is_animating = true
-		
-func update( delta: float):
-	if not state: 
-		return
-	state.update(delta)
-	
-	#if state.is_over():
-	#	set_state(null)
-	#	return
-
-func update_physics(delta: float):
-	state.update_physics( delta)
-
-	pass
+func update_physics(ctx, out):
+	state.update_physics( ctx, out)
