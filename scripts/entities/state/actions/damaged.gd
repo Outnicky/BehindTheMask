@@ -3,7 +3,6 @@ class_name  Damaged extends Actions
 
 var vector :Vector2
 var immunity_time=0.2
-var elapsed = 0
 var knockback_force = 900
 var knockback_decelartion = 12
 var current_knockback = 1
@@ -21,7 +20,7 @@ func move(ctx, out: PhysicsOutput):
 	
 
 func is_over(ctx) -> bool:
-	return elapsed >= immunity_time
+	return time_elapsed >= immunity_time
 	
 
 	

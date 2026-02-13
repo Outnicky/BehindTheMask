@@ -54,7 +54,7 @@ func update_process(ctx: Context, out: VisualOutput):
 	movememtSM.update_process(ctx, out)
 	if actionsSM.state is Attack and actionsSM.state.is_over(ctx):
 		pass
-	if actionsSM.state.is_over(ctx) and actionsSM.state is not Nothing:
+	if actionsSM.state.is_over(ctx):
 		actionsSM.new_state(ctx, Nothing.new())
 	else:
 		actionsSM.update_process(ctx, out)
