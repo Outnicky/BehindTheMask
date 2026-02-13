@@ -1,4 +1,4 @@
-class_name AngrySoul extends EnemyClass
+class_name AngrySoul extends EnemyEntity
 
 @onready var animation_player: AnimatedSprite2D= $AnimatedSprite2D
 

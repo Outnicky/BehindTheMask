@@ -8,11 +8,10 @@ var new_states= []
 var animation_normal : VisualOutput.AnimationData
 var animation_overlay: VisualOutput.AnimationData
 
+func _init():
+	movememtSM = StateMachine.new(Idle.new())
+	actionsSM = StateMachine.new(Nothing.new())
 
-func start_physics(ctx, out: PhysicsOutput):
-	super.start_physics(ctx, out)
-	movememtSM = StateMachine.new(ctx.owner, Idle.new())
-	actionsSM = StateMachine.new(ctx.owner, Nothing.new())
 func new_state(ctx, state):
 	if state is Movement:
 		movememtSM.new_state(ctx, state)
@@ -63,13 +62,5 @@ func update_process(ctx: Context, out: VisualOutput):
 
 func update_physics(ctx: Context, out: PhysicsOutput):
 	super.update_physics(ctx, out)
-	if movememtSM.state is Move:
-		pass
 	movememtSM.update_physics(ctx, out)
 	actionsSM.update_physics(ctx, out)
-	if out.direction.x == 1:
-		pass
-	var velocity =ctx.owner.velocity * out.velocity_multiplier +\
-	(out.direction* out.speed_multiplayer *out.speed + out.gravity)
-	ctx.owner.velocity= velocity
-	ctx.owner.set_direction(out.facing_direction)

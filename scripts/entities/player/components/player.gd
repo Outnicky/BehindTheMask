@@ -13,6 +13,7 @@ var can_dash = true
 func _init():
 	can_attack = true
 	primary_state = PlayerNormal.new()
+	
 func _ready() -> void:
 	max_hp = 5
 	super._ready()
@@ -25,36 +26,23 @@ func set_health(hp):
 	lamp.set_life(current_hp)
 		
 
-	
 func on_die():
 	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
 	
-func take_damage(enemy: EnemyClass):
+func take_damage(enemy: EnemyEntity):
 	print(immune )
 	if immune:
 		return
-	primary_state.new_state(Damaged.new(enemy))
-	#state_machine.set_new_state(Damaged.new(self).setup({"other": enemy}))
-
-
+	var context = Context.new(self,0.1)
+	primary_state.new_state(context, Damaged.new(enemy))
 
 func _input(event : InputEvent):
 	primary_state.handle_input(event)
 
-
-func apply_gravity(delta):
-	velocity += get_gravity()  * delta
-
-func _process(delta: float) -> void:
-	super._process(delta)
-
 func _physics_process(delta: float) -> void:
-	super._physics_process(delta)
 	if is_on_floor():
 		double_jump = true
 	super._physics_process(delta)
-	move_and_slide()
-	
 
 func set_hitbox(crouching):
 	if crouching:

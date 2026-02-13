@@ -1,1 +1,1 @@
-class_name luxury extends EnemyClass
+class_name luxury extends EnemyEntity

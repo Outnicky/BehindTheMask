@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ducbjol5rb3np"]
 
-[ext_resource type="Script" uid="uid://dcpu2356jv8q5" path="res://scripts/entities/player/components/player_controller.gd" id="1_qhqgy"]
+[ext_resource type="Script" uid="uid://dcpu2356jv8q5" path="res://scripts/entities/player/components/player.gd" id="1_qhqgy"]
 [ext_resource type="Shape2D" uid="uid://uyeutbgk0e5u" path="res://resources/STAND.tres" id="2_fjrip"]
 [ext_resource type="Texture2D" uid="uid://caq3t353k01tl" path="res://sprites/frisko/player-Sheet.png" id="3_6eyoc"]
 [ext_resource type="AudioStream" uid="uid://b0wfcye8ndopd" path="res://sounds/perfectdodgesfx.wav" id="3_kqtwu"]

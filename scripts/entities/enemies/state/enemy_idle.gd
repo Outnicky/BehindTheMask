@@ -1,1 +1,0 @@
-class_name EnemyIdle extends EnemyState

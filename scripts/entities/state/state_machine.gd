@@ -1,14 +1,10 @@
 class_name StateMachine extends RefCounted
 
 var state : State
-var entity : Entity
 var queue : State
-var default_state
 var is_animating = false
-var animation_elapsed = 0
 
-func _init(e, s):
-	entity = e
+func _init(s):
 	state = s
 	
 
@@ -18,8 +14,8 @@ func add_queue(s):
 func new_state(ctx,other: State):
 	if other is Attack:
 		pass
+	state.update_from_state(other)
 	if state == other:
-		state.update_from_state(other)
 		return
 	var changed = false
 	if other.force_state:

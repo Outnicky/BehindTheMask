@@ -1,6 +1,12 @@
 class_name EnemyAi extends Resource
 
-var e :EnemyClass 
+var e :EnemyEntity 
+
+const FOV = 5
+const RAYCAST_AMOUNT = 40
+const RAYCAST_DISTANCE = 500
+var raycast_node : Node  = Node2D.new()
+
 enum Actions {Wonder, Chase}
 var action = Actions.Wonder
 const ray = preload("res://scenes/ray.tscn")
@@ -13,7 +19,12 @@ func get_ray():
 	var ray = ray.instantiate()
 	return ray
 
-
+func ready():
+	raycast_node = Node2D.new()
+	e.add_child(raycast_node)
+	raycast_node.position = Vector2.ZERO
+	for i in range(RAYCAST_AMOUNT):
+		raycast_node.add_child(get_ray())
 func get_wait_time():
 	return  randi_range(2, 5)
 func get_walk_time():
@@ -52,7 +63,7 @@ func chase():
 func  look(dir: Vector2):
 	var i = 0
 	var in_sight = false
-	for ray: RayCast2D in e.node.get_children():
+	for ray: RayCast2D in raycast_node.get_children():
 		var angle_rad = deg_to_rad(20  - i * 2)
 		var vector = dir.rotated(angle_rad)
 		var t = Vector2(vector.x, vector.y) * e.RAYCAST_DISTANCE 

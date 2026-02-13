@@ -1,4 +1,4 @@
-class_name Greed extends EnemyClass
+class_name Greed extends EnemyEntity
 
 
 

@@ -1,4 +1,4 @@
-class_name envy extends EnemyClass
+class_name envy extends EnemyEntity
 
 
 @onready var animation_player: AnimatedSprite2D= $AnimatedSprite2D

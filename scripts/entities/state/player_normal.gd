@@ -50,10 +50,7 @@ func handle_input(event: InputEvent):
 
 func update_physics(ctx : Context, out: PhysicsOutput):
 	super.update_physics(ctx, out)
-	if actionsSM.state is PlayerJump:
-		pass
 	if crouching:
 		out.speed_multiplayer.x = ctx.out.CROUCHING_MULTIPLIER 
 	elif running:
 		out.speed_multiplayer.x  *= ctx.out.RUN_MODIFIER 
-#	ctx.owner.velocity= out.direction* out.speed_multiplayer *out.speed + out.gravity

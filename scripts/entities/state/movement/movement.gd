@@ -7,7 +7,7 @@ func move(ctx : Context, out : PhysicsOutput):
 	if !ctx.owner.is_on_floor():
 		out.gravity = ctx.owner.get_gravity() * ctx.delta
 		out.direction.y = 1
-	if dir.x == 1:
+	if dir.x == -1:
 		pass
 	out.velocity_multiplier.x = 0
 	out.direction.x = dir.x

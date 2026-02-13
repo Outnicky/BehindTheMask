@@ -2,7 +2,7 @@ class_name  Damaged extends Actions
 
 
 var vector :Vector2
-var immunity_time=0.4
+var immunity_time=0.2
 var elapsed = 0
 var knockback_force = 900
 var knockback_decelartion = 12
@@ -14,8 +14,10 @@ func _init(e):
 
 
 
-func move(ctx, out): 
-	out.velocity.x = -500 * dir.x
+func move(ctx, out: PhysicsOutput): 
+	out.velocity_multiplier.x = 0
+	out.direction.x = -1
+	out.speed.x = 500
 	
 
 func is_over(ctx) -> bool:

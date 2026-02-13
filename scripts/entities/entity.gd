@@ -37,14 +37,19 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var ctx = Context.new(self, delta)
 	var out = VisualOutput.new()
-	
 	primary_state.update_process(ctx, out)
+	
 func _physics_process(delta: float) -> void:
 	var ctx = Context.new(self, delta)
 	var out = PhysicsOutput.new()
 	out.facing_direction = direction
 	primary_state.update_physics(ctx, out)
-
+	var v =velocity * out.velocity_multiplier +\
+	(out.direction* out.speed_multiplayer *out.speed + out.gravity)
+	velocity= v
+	set_direction(out.facing_direction)
+	primary_state.update_physics(ctx, out)
+	move_and_slide()
 
 func take_damage(entity):
 	if immune:
