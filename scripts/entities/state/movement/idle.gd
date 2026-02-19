@@ -8,6 +8,6 @@ func _init():
 func move(ctx, out: PhysicsOutput):
 	super.move(ctx, out)
 	out.direction.x = 0
-	out.velocity_multiplier.x = 0
+#	out.velocity_multiplier.x = 0
 func is_over(ctx) -> bool:
 	return true

@@ -69,8 +69,9 @@ func  look(dir: Vector2):
 		var t = Vector2(vector.x, vector.y) * e.RAYCAST_DISTANCE 
 		if ray.is_colliding():
 			var obj = ray.get_collider()
-			if obj is Player:
+			if obj is PlayerEntity:
 				target = obj
+				
 				last_sight_pos = target.position
 				in_sight = false
 		ray.target_position = t
@@ -87,7 +88,7 @@ func update(delta):
 	e.primary_state.new_state(Attack.new())
 	for body in e.attack_controller.get_overlapping_bodies():
 		print(body)
-		if body is Player:
+		if body is PlayerEntity:
 			print("PLAYER a")
 			e.primary_state.new_state(Attack.new())
 	if target:

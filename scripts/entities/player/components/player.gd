@@ -1,4 +1,5 @@
-class_name Player extends Entity
+class_name PlayerEntity extends Entity
+
 
 
 

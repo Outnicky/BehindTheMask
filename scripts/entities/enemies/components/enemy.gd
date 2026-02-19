@@ -2,7 +2,7 @@ class_name EnemyEntity extends Entity
 
 
 const ray = preload("res://scenes/ray.tscn")
-@onready var player = $"%Player"
+@onready var player = $"%PlayerEntity"
 @onready var ground_left: Area2D =$ground_left
 @onready var ground_right  : Area2D = $ground_right
 var ai: EnemyAi = EnemyAi.new(self)

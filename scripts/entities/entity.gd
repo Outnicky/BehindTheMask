@@ -18,6 +18,8 @@ var move_dir: Vector2
 func _init() -> void:
 	primary_state = PrimaryState.new()
 func set_direction(new_direction):
+	if new_direction == 0:
+		return
 	if new_direction == direction:
 		return
 	if new_direction < 0:

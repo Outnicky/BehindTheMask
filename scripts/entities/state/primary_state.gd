@@ -52,12 +52,11 @@ func update_process(ctx: Context, out: VisualOutput):
 		new_state(ctx, state)
 	new_states.clear()
 	movememtSM.update_process(ctx, out)
-	if actionsSM.state is Attack and actionsSM.state.is_over(ctx):
-		pass
-	if actionsSM.state.is_over(ctx):
+	#actionsSM.update_process(ctx, out)
+	if actionsSM.state.is_over(ctx) and actionsSM.state is not Nothing:
 		actionsSM.new_state(ctx, Nothing.new())
-	else:
-		actionsSM.update_process(ctx, out)
+		animation_normal.priority = 0
+	actionsSM.update_process(ctx, out)
 	resolve_animation(ctx,out)
 
 func update_physics(ctx: Context, out: PhysicsOutput):
