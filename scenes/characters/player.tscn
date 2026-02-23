@@ -270,6 +270,14 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.2,
+"texture": SubResource("AtlasTexture_7xgtv")
+}],
+"loop": true,
+"name": &"Rise",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5jukt")
 }, {
@@ -324,7 +332,7 @@ shape = ExtResource("2_fjrip")
 [node name="AnimationController" type="AnimatedSprite2D" parent="." unique_id=252318263]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gyfs4")
-animation = &"Attack"
+animation = &"Rise"
 offset = Vector2(-1.1408602, -1.1920929e-06)
 
 [node name="dash_again_timer" type="Timer" parent="." unique_id=1966210659]

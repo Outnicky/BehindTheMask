@@ -1,51 +1,79 @@
-class_name StateMachine extends RefCounted
+class_name StateMachine
 
-var state : State
-var queue : State
-var is_animating = false
+var movement: State  = Idle.new()
+var action: State = Nothing.new()
 
-func _init(s):
-	state = s
-	
 
-func add_queue(s):
-	queue =s 
-	
-func new_state(ctx,other: State):
-	if other is Attack:
-		pass
-	state.update_from_state(other)
-	if state == other:
+var animation_normal : VisualOutput.AnimationData
+var animation_overlay: VisualOutput.AnimationData
+var new_states= []
+var commands = []
+
+func new_state(ctx, state):
+	new_states.append(state)
+#	if state is Movement:
+#		movement.new_state(ctx, state)
+#	elif state is Actions:
+#		action.new_state(ctx, state)
+
+func stop_animation(ctx: Context):
+	if !animation_normal:
 		return
-	var changed = false
-	if other.force_state:
-		set_state(ctx, other)
-		changed = true
-	elif other.can_swap_into(ctx):
-		if state.is_over(ctx):
-			set_state(ctx, other)
-			changed = true
-	if changed == false:
-		add_queue(other)
-			
-func set_state(ctx, other: State):
-	print(other.get_script())
-	state.stop(ctx)
-	state = other
-	is_animating = false
+	if ctx.owner.animation_player.animation_finished.has_connections():
+		ctx.owner.animation_player.animation_finished.disconnect(_on_animation_finish)
 
-func is_blocking_movement():
-	return state.block_movement
+func resolve_animation(ctx: Context, out: VisualOutput):
+	if !animation_normal:
+		animation_normal = out.animation_normal
+	elif out.animation_normal.priority > animation_normal.priority:
+		stop_animation(ctx)
+		animation_normal = out.animation_normal
+	elif animation_normal.priority == out.animation_normal.priority and animation_normal.state != out.animation_normal.state:
+		stop_animation(ctx)
+		animation_normal = out.animation_normal
+	if !animation_overlay:
+		animation_overlay = out.animation_overlay
 
-
-func stop(ctx):
-	is_animating= false
-	state.stop(ctx)
-
-
-
-func update_process(ctx, out):
-	state.update_process(ctx, out)
+	if !animation_normal.started:
+		animation_normal.started = true
+		ctx.owner.animation_player.play(animation_normal.state.get_name())
+		ctx.owner.animation_player.animation_finished.connect(_on_animation_finish)
+func handle_command(cmd):
+	pass
 	
-func update_physics(ctx, out):
-	state.update_physics( ctx, out)
+func _on_animation_finish():
+	if animation_normal.on_finish:
+		animation_normal.on_finish.call()
+	animation_normal.priority = 0
+	
+func update_process(ctx: Context, out: VisualOutput):
+	for state in new_states:
+		if state is Movement:
+			pass
+			var response = next_movement(ctx, state)
+			if response:
+				movement.stop(ctx)
+				movement = response
+		if state is Actions:
+			var response = next_action(ctx, state)
+			if response:
+				action.stop(ctx)
+				action = response
+	new_states.clear()
+	movement.update_process(ctx, out)
+	action.update_process(ctx, out)
+	if action.is_over(ctx) and action is not Nothing:
+		action.new_state(ctx, Nothing.new())
+		animation_normal.priority = 0
+	resolve_animation(ctx,out)
+
+func update_physics(ctx: Context, out: PhysicsOutput):
+	movement.update_physics(ctx, out)
+	action.update_physics(ctx, out)
+
+func next_movement(ctx : Context, other: State)-> State:
+	var response = movement.new_state(ctx, other)
+	return response
+
+func next_action(ctx : Context, other: State)-> State:
+	return action.new_state(ctx, other)

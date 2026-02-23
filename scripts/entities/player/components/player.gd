@@ -3,7 +3,7 @@ class_name PlayerEntity extends Entity
 
 
 
-@onready var area : Area2D = $AreaSword
+
 @export var lamp : PlayerLampUi
 
 
@@ -13,7 +13,7 @@ var can_dash = true
 
 func _init():
 	can_attack = true
-	primary_state = PlayerNormal.new()
+	controller = PlayerController.new()
 	
 func _ready() -> void:
 	max_hp = 5
@@ -35,10 +35,10 @@ func take_damage(enemy: EnemyEntity):
 	if immune:
 		return
 	var context = Context.new(self,0.1)
-	primary_state.new_state(context, Damaged.new(enemy))
+	controller.new_state(context, Damaged.new(enemy))
 
 func _input(event : InputEvent):
-	primary_state.handle_input(event)
+	controller.handle_input(event)
 
 func _physics_process(delta: float) -> void:
 	if is_on_floor():

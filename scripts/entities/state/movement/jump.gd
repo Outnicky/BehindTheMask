@@ -1,4 +1,4 @@
-class_name  PlayerJump extends Actions
+class_name  PlayerJump extends Movement
 
 const JUMP_VELOCITY =600.0
 const jump_time = 0.1
@@ -13,6 +13,7 @@ func can_swap_into(ctx) -> bool:
 
 
 func start_physics(ctx, out: PhysicsOutput):
+	super.start_physics(ctx, out)
 	if !ctx.owner.is_on_floor():
 		ctx.owner.double_jump  = false
 	out.velocity_multiplier.y =0

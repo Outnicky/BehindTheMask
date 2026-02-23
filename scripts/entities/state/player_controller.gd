@@ -1,4 +1,4 @@
-class_name PlayerNormal extends PrimaryState
+class_name PlayerController extends StateMachine
 
 
 var temporary_velocity :Vector2
@@ -11,21 +11,35 @@ var right = false
 
 
 
-	
+func next_movement(ctx : Context, other: State)-> State:
+	#if !movement.is_over(ctx):
+		#return
+	if action is not Nothing:
+		return Idle.new()
+	var e = ctx.owner
+#	if !e.is_on_floor():
+#		if e.velocity.y <0:
+#			return Fall.new()
+#		else:
+#			if movement is PlayerJump and movement.is_over(ctx):
+#				return Rise.new()
+	var result = movement.new_state(ctx, other)
+	return result
+	#return Idle.new()
+
+func next_action(ctx : Context, other: State)-> State:
+	return
 func handle_input(event: InputEvent):
 	if event.is_action_pressed("left"):
 		left = true
 		new_states.append(Move.new(Vector2(-1,0)))
-		#movememtSM.new_state(Move.new(Vector2(-1,0)))	
 	elif event.is_action_pressed("right"):
 		right = true
 		new_states.append(Move.new(Vector2(1,0)))
-		#movememtSM.new_state(Move.new(Vector2(1,0)))
 	if event.is_action_released("right") :
 		right = false
 		if !right and !left:
 			new_states.append(Idle.new())
-			#movememtSM.new_state(Idle.new())
 		else:
 			new_states.append(Move.new(Vector2(-1,0)))
 	elif event.is_action_released("left"):

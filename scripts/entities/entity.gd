@@ -10,13 +10,13 @@ var immune = false
 var animation_player : AnimatedSprite2D
 var audio_manager: AudioManager
 var attack_controller: AttackController
-var direction = 1
-var primary_state 
+var direction = 1 
+var controller 
 var move_dir: Vector2
 
 
 func _init() -> void:
-	primary_state = PrimaryState.new()
+	controller = PlayerController.new()
 func set_direction(new_direction):
 	if new_direction == 0:
 		return
@@ -39,18 +39,18 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var ctx = Context.new(self, delta)
 	var out = VisualOutput.new()
-	primary_state.update_process(ctx, out)
+	controller.update_process(ctx, out)
 	
 func _physics_process(delta: float) -> void:
 	var ctx = Context.new(self, delta)
 	var out = PhysicsOutput.new()
 	out.facing_direction = direction
-	primary_state.update_physics(ctx, out)
+	controller.update_physics(ctx, out)
 	var v =velocity * out.velocity_multiplier +\
 	(out.direction* out.speed_multiplayer *out.speed + out.gravity)
 	velocity= v
 	set_direction(out.facing_direction)
-	primary_state.update_physics(ctx, out)
+	controller.update_physics(ctx, out)
 	move_and_slide()
 
 func take_damage(entity):

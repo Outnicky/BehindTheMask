@@ -9,15 +9,15 @@ var raycast_node : Node  = Node2D.new()
 
 enum Actions {Wonder, Chase}
 var action = Actions.Wonder
-const ray = preload("res://scenes/ray.tscn")
+#const ray = preload("res://scenes/ray.tscn")
 var target : Entity
 var last_sight_pos :Vector2
 func _init(enemy):
 	e = enemy
 
 func get_ray():
-	var ray = ray.instantiate()
-	return ray
+	#var ray = ray.instantiate()
+	return 
 
 func ready():
 	raycast_node = Node2D.new()

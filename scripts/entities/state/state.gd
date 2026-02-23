@@ -10,6 +10,25 @@ var force_state = false
 var time_elapsed = 0
 var animating = false
 
+func new_state(ctx, other) -> State:
+	if self is PlayerJump and other is Move:
+		pass
+	update_from_state(other)
+	if self == other:
+		return 
+	var changed = false
+	if other.force_state:
+		return other
+		#set_state(ctx, other)
+		#changed = true
+	elif other.can_swap_into(ctx):
+		if is_over(ctx):
+			return other
+			#set_state(ctx, other)
+			changed = true
+	return
+		
+
 func get_animation_state(ctx, out: VisualOutput):
 	out.animation_normal = VisualOutput.AnimationData.new(self, 0)
 func setup(x) -> State:
@@ -29,6 +48,8 @@ func can_swap_into(ctx):
 func is_over(ctx) -> bool:
 	return ended
 
+func next_state(ctx)-> State:
+	return Nothing.new()
 
 func start_process(ctx, out: VisualOutput):
 	get_animation_state(ctx, out)
