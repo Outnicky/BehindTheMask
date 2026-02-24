@@ -7,7 +7,7 @@ var knockback_force = 900
 var knockback_decelartion = 12
 var current_knockback = 1
 var other: Entity
-
+var dir = Vector2.ZERO
 func _init(e):
 	other = e
 

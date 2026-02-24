@@ -35,7 +35,7 @@ func take_damage(enemy: EnemyEntity):
 	if immune:
 		return
 	var context = Context.new(self,0.1)
-	controller.new_state(context, Damaged.new(enemy))
+	controller.new_command(Damaged.new(enemy))
 
 func _input(event : InputEvent):
 	controller.handle_input(event)

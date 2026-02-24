@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b0wfcye8ndopd" path="res://sounds/perfectdodgesfx.wav" id="3_kqtwu"]
 [ext_resource type="AudioStream" uid="uid://ddu2c4px4efhi" path="res://sounds/damagesfx.mp3" id="4_6eyoc"]
 [ext_resource type="Script" uid="uid://butnjk2g0ouw2" path="res://scripts/entities/player/components/player_audio_manager.gd" id="4_eojnx"]
-[ext_resource type="Script" uid="uid://te7mjd5yb7un" path="res://scripts/entities/attack_controller.gd" id="4_qgnko"]
+[ext_resource type="Script" uid="uid://te7mjd5yb7un" path="res://scripts/entities/components/attack_controller.gd" id="4_qgnko"]
 [ext_resource type="AudioStream" uid="uid://bb1oc8ak2ay22" path="res://sounds/swingsfx.wav" id="5_eojnx"]
 [ext_resource type="AudioStream" uid="uid://b41af52coxwxw" path="res://sounds/dashsfx.wav" id="6_qgnko"]
 

@@ -1,14 +1,15 @@
 class_name Movement extends State
 
-func update_from_state(other):
-	dir = other.dir
+
 
 func move(ctx : Context, out : PhysicsOutput):
+	var dir = ctx.move_direction
 	if self is PlayerJump :
 		pass
 	if !ctx.owner.is_on_floor():
 		out.gravity = ctx.owner.get_gravity() * ctx.delta
-		out.direction.y = 1
+	else:
+		out.direction.y = 0
 	out.velocity_multiplier.x = 0
 	out.direction.x = dir.x
 	out.speed.x = ctx.owner.SPEED

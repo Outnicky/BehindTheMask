@@ -35,14 +35,14 @@ func get_forget_target_time():
 func wonder():
 	if action == Actions.Chase:
 		return
-
+	var direction 
 	if !e.has_floor(e.ground_right):
-		e.direction = -1 
+		direction = -1 
 	elif !e.has_floor(e.ground_left): 
-		e.direction = 1
+		direction = 1
 	else:
-		e.direction = [-1, 1].pick_random()		
-	e.primary_state.new_state(Move.new(Vector2(e.direction, 0)))
+		direction = [-1, 1].pick_random()
+	e.controller.move_dir.x = direction
 	e.velocity.x  = e.direction * e.SPEED 
 	e.get_tree().create_timer(get_wait_time()).timeout.connect(wait)
 
@@ -58,7 +58,7 @@ func chase():
 	var dir = 1
 	if vector.x < 0:
 		dir = -1
-	e.primary_state.set_new_state(Move.new(Vector2(dir, 0)))
+	e.controller.move_dir.x = dir
 	#velocity.x = dir * SPEED
 func  look(dir: Vector2):
 	var i = 0

@@ -10,7 +10,7 @@ var immune = false
 var animation_player : AnimatedSprite2D
 var audio_manager: AudioManager
 var attack_controller: AttackController
-var direction = 1 
+var facing_direction = 1 
 var controller 
 var move_dir: Vector2
 
@@ -20,7 +20,7 @@ func _init() -> void:
 func set_direction(new_direction):
 	if new_direction == 0:
 		return
-	if new_direction == direction:
+	if new_direction == facing_direction:
 		return
 	if new_direction < 0:
 		animation_player.flip_h = true
@@ -28,7 +28,7 @@ func set_direction(new_direction):
 	elif new_direction > 0:
 		animation_player.flip_h = false
 		attack_controller.flip()
-	direction = new_direction
+	facing_direction = new_direction
 func _ready() -> void:
 	set_health(max_hp)
 	animation_player = $AnimationController
@@ -37,20 +37,19 @@ func _ready() -> void:
 	
 
 func _process(delta: float) -> void:
-	var ctx = Context.new(self, delta)
+	var ctx = controller.generate_context(self,delta)
 	var out = VisualOutput.new()
 	controller.update_process(ctx, out)
 	
 func _physics_process(delta: float) -> void:
-	var ctx = Context.new(self, delta)
+	var ctx = controller.generate_context(self, delta)
 	var out = PhysicsOutput.new()
-	out.facing_direction = direction
+	out.facing_direction = facing_direction
 	controller.update_physics(ctx, out)
 	var v =velocity * out.velocity_multiplier +\
 	(out.direction* out.speed_multiplayer *out.speed + out.gravity)
 	velocity= v
 	set_direction(out.facing_direction)
-	controller.update_physics(ctx, out)
 	move_and_slide()
 
 func take_damage(entity):
@@ -58,6 +57,9 @@ func take_damage(entity):
 		return
 	set_health(current_hp-1)
 	print(current_hp)
+	immune = true
+	get_tree().create_timer(1).timeout.connect(func():
+		immune = false)
 
 func set_health(hp):
 	current_hp = hp

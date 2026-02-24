@@ -53,6 +53,7 @@ func update_process(ctx: Context, out: VisualOutput):
 			var response = next_movement(ctx, state)
 			if response:
 				movement.stop(ctx)
+				response.update_from_state(movement)
 				movement = response
 		if state is Actions:
 			var response = next_action(ctx, state)

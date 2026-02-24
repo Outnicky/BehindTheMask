@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bqoq7daq5r42h" path="res://scripts/entities/enemies/types/luxury.gd" id="1_43d1n"]
 [ext_resource type="Texture2D" uid="uid://k44oanl2bf6t" path="res://sprites/frisko/luxury-Sheet.png" id="1_oo4my"]
 [ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/entities/enemies/components/enemy_hitbox.gd" id="2_43d1n"]
-[ext_resource type="Script" uid="uid://te7mjd5yb7un" path="res://scripts/entities/attack_controller.gd" id="4_8u85l"]
+[ext_resource type="Script" uid="uid://te7mjd5yb7un" path="res://scripts/entities/components/attack_controller.gd" id="4_8u85l"]
 [ext_resource type="Script" uid="uid://butnjk2g0ouw2" path="res://scripts/entities/player/components/player_audio_manager.gd" id="5_h8gj6"]
 [ext_resource type="AudioStream" uid="uid://b0wfcye8ndopd" path="res://sounds/perfectdodgesfx.wav" id="6_q7ysn"]
 [ext_resource type="AudioStream" uid="uid://ddu2c4px4efhi" path="res://sounds/damagesfx.mp3" id="7_q5lew"]

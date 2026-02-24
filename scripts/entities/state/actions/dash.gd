@@ -30,7 +30,7 @@ func can_swap_into(ctx)-> bool:
 func start_physics(ctx: Context, out: PhysicsOutput):
 	super.start_physics(ctx, out)
 	var player = ctx.owner as PlayerEntity
-	dash_direction = player.direction
+	dash_direction = player.facing_direction
 	player.can_dash = false
 	player.collision_mask = 2
 	player.get_tree().create_timer(dash_cooldown).timeout.connect(func():

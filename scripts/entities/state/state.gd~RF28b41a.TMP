@@ -3,6 +3,7 @@ class_name State extends RefCounted
 
 
 var ended = false
+var dir: Vector2 = Vector2.ZERO
 var has_started_process = false
 var has_started_physics = false
 var force_state = false
@@ -10,13 +11,21 @@ var time_elapsed = 0
 var animating = false
 
 func new_state(ctx, other) -> State:
+	if self is PlayerJump and other is Move:
+		pass
+	update_from_state(other)
 	if self == other:
 		return 
+	var changed = false
 	if other.force_state:
 		return other
+		#set_state(ctx, other)
+		#changed = true
 	elif other.can_swap_into(ctx):
 		if is_over(ctx):
 			return other
+			#set_state(ctx, other)
+			changed = true
 	return
 		
 
@@ -53,8 +62,8 @@ func update_process(ctx: Context, out: VisualOutput):
 		has_started_process = true
 	pass
 	
-func update_from_state(other):
-	return 
+func update_from_state(other)-> State:
+	return self
 
 func blend(other:State): # not working
 	if other.block_animation:
@@ -80,7 +89,3 @@ func _equals(other: Object) -> bool:
 	#	return false
 
 	return get_name() == other.get_name()
-	
-func replace(ctx, other : State) -> State:
-	stop(ctx)
-	return other
