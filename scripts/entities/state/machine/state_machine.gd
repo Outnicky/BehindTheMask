@@ -76,7 +76,7 @@ func update_process(ctx: Context, out: VisualOutput):
 	if action.is_over(ctx) and action is not Nothing:
 		action.new_state(ctx, Nothing.new())
 		animation_normal.priority = 0
-	resolve_animation(ctx,out)
+	
 
 func update_physics(ctx: Context, out: PhysicsOutput):
 	movement.update_physics(ctx, out)

@@ -278,6 +278,41 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_5jukt")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_vwwfy")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_dg40j")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_7xgtv")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_6rclf")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_s0anf")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_s1x7u")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_c3kfx")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_hdner")
+}, {
+"duration": 0.4,
+"texture": SubResource("AtlasTexture_m38kj")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_5jukt")
 }, {
@@ -332,7 +367,7 @@ shape = ExtResource("2_fjrip")
 [node name="AnimationController" type="AnimatedSprite2D" parent="." unique_id=252318263]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_gyfs4")
-animation = &"Rise"
+animation = &"Run"
 offset = Vector2(-1.1408602, -1.1920929e-06)
 
 [node name="dash_again_timer" type="Timer" parent="." unique_id=1966210659]

@@ -11,7 +11,7 @@ var animation_player : AnimatedSprite2D
 var audio_manager: AudioManager
 var attack_controller: AttackController
 var facing_direction = 1 
-var controller 
+var controller : StateMachine
 var move_dir: Vector2
 
 
@@ -40,6 +40,7 @@ func _process(delta: float) -> void:
 	var ctx = controller.generate_context(self,delta)
 	var out = VisualOutput.new()
 	controller.update_process(ctx, out)
+	controller.resolve_animation(ctx,out)
 	
 func _physics_process(delta: float) -> void:
 	var ctx = controller.generate_context(self, delta)

@@ -5,10 +5,11 @@ var temporary_velocity :Vector2
 var running = false
 var crouching = false
 
-
 var left := false
 var right := false
 
+
+var stance : Stance = Normal.new()
 
 
 
@@ -23,7 +24,7 @@ func handle_input(event: InputEvent):
 		left = true
 	elif event.is_action_pressed("right"):
 		right = true
-	if event.is_action_released("right") :
+	if event.is_action_released("right"):
 		right = false
 	elif event.is_action_released("left"):
 		left = false
@@ -32,9 +33,16 @@ func handle_input(event: InputEvent):
 	elif event.is_action_pressed("dash"):
 		new_command(Dash.new())
 	elif event.is_action_pressed("crouch"):
-		new_command(Crouch.new())
+		crouching = true
+	elif event.is_action_released("crouch"):
+		crouching = false
+	elif event.is_action_pressed("run"):
+		running = true
+	elif event.is_action_released("run"):
+		running = false
 	elif event.is_action_pressed("attack"):
 		new_command(Attack.new())
+	
 
 
 func update_current_states(ctx):
@@ -43,7 +51,6 @@ func update_current_states(ctx):
 		return
 	if !movement.is_over(ctx):
 		return
-	
 	if move_dir == Vector2.ZERO and ctx.owner.is_on_floor():
 		movement = movement.replace(ctx, Idle.new())
 	elif move_dir.y == 0:
@@ -58,7 +65,16 @@ func update_process(ctx: Context, out: VisualOutput):
 	var l = -1 if left and !right else 0 
 	var x = r + l
 	move_dir.x =  x
-	super.update_process(ctx,out)
 	
+	if crouching:
+		stance = stance.replace(ctx, Crouch.new())
+	elif running:
+		stance = stance.replace(ctx, Run.new())
+	else:
+		stance = stance.replace(ctx, Normal.new())
+		
+	super.update_process(ctx,out)
+	stance.update_process(ctx, out)
 func update_physics(ctx : Context, out: PhysicsOutput):
 	super.update_physics(ctx, out)
+	stance.update_physics(ctx, out)
