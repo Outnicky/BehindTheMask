@@ -9,6 +9,7 @@ class_name PlayerEntity extends Entity
 
 var double_jump = false
 var can_dash = true
+var spawnpoint = Vector2(404.0, 160.0)
 
 
 func _init():
@@ -28,7 +29,8 @@ func set_health(hp):
 		
 
 func on_die():
-	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+	self.global_position = spawnpoint
+	set_health(max_hp)
 	
 func take_damage(enemy: EnemyEntity):
 	print(immune )
