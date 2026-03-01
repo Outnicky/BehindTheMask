@@ -9,7 +9,6 @@ class_name PlayerEntity extends Entity
 
 var double_jump = false
 var can_dash = true
-var spawnpoint = Vector2(404.0, 160.0)
 
 
 func _init():
@@ -18,6 +17,7 @@ func _init():
 	
 func _ready() -> void:
 	max_hp = 5
+	setspawnpoint()
 	super._ready()
 	audio_manager = $AudioManager
 	animation_player = $AnimationController
@@ -29,7 +29,7 @@ func set_health(hp):
 		
 
 func on_die():
-	self.global_position = spawnpoint
+	self.global_position = spawnmanager.spawnpoint
 	set_health(max_hp)
 	
 func take_damage(enemy: EnemyEntity):
@@ -54,4 +54,9 @@ func set_hitbox(crouching):
 	else:
 		$CrouchingShape.disabled = true
 		$PlayerHitbox.disabled = false
-		pass
+		pass	
+
+func setspawnpoint():
+	if (spawnmanager.spawnpoint == null):
+		spawnmanager.spawnpoint = global_position
+	pass
