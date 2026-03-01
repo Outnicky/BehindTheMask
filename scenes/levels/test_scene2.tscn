@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://kms544s7776v" path="res://scenes/ui.tscn" id="3_qs2y6"]
 [ext_resource type="Texture2D" uid="uid://b2b4jkepypb4d" path="res://sprites/WhatsApp Image 2026-01-31 at 8.50.15 AM.jpeg" id="4_76yws"]
 [ext_resource type="PackedScene" uid="uid://cwllhlwu7blox" path="res://scenes/characters/luxury.tscn" id="5_qs2y6"]
+[ext_resource type="PackedScene" uid="uid://ct5etma73wiy0" path="res://scenes/checkpoint.tscn" id="6_76yws"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_xdqlr"]
 
@@ -26,7 +27,7 @@ texture = SubResource("CanvasTexture_xdqlr")
 position = Vector2(0.007359326, -0.0069773197)
 shape = SubResource("RectangleShape2D_dkuvb")
 
-[node name="Player" parent="." unique_id=687882061 node_paths=PackedStringArray("lamp") instance=ExtResource("1_w8tvi")]
+[node name="Player" parent="." unique_id=687882061 node_paths=PackedStringArray("lamp") groups=["Player"] instance=ExtResource("1_w8tvi")]
 unique_name_in_owner = true
 position = Vector2(404, 160)
 lamp = NodePath("CameraPersonagem/CanvasLayer/Ui")
@@ -65,3 +66,9 @@ shape = SubResource("RectangleShape2D_dkuvb")
 
 [node name="Luxury" parent="." unique_id=1034526165 instance=ExtResource("5_qs2y6")]
 position = Vector2(495, 43)
+
+[node name="Checkpoint" parent="." unique_id=1750348215 instance=ExtResource("6_76yws")]
+position = Vector2(779, 86)
+
+[node name="Checkpoint2" parent="." unique_id=68766005 instance=ExtResource("6_76yws")]
+position = Vector2(663, 248)

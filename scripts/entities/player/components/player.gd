@@ -27,7 +27,6 @@ func set_health(hp):
 	super.set_health(hp)
 	lamp.set_life(current_hp)
 		
-
 func on_die():
 	self.global_position = spawnmanager.spawnpoint
 	set_health(max_hp)
