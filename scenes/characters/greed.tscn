@@ -1,9 +1,14 @@
 [gd_scene format=3 uid="uid://d3iomssxlxm3c"]
 
 [ext_resource type="Texture2D" uid="uid://dwx2b6qrcv2ne" path="res://sprites/frisko/ZOIO UAAAA-Sheet.png" id="1_6y5ai"]
-[ext_resource type="Script" uid="uid://momwxxbanvjp" path="res://scripts/entities/enemies/greed.gd" id="1_483m1"]
+[ext_resource type="Script" uid="uid://momwxxbanvjp" path="res://scripts/entities/enemies/types/greed.gd" id="1_483m1"]
 [ext_resource type="Script" uid="uid://0kkn0armm1o6" path="res://scripts/entities/enemies/components/enemy_hitbox.gd" id="2_483m1"]
-[ext_resource type="Script" path="res://scripts/attack.gd" id="4_tpf3e"]
+[ext_resource type="Script" uid="uid://b17bnsr48nemm" path="res://scripts/entities/attack.gd" id="4_tpf3e"]
+[ext_resource type="Script" uid="uid://butnjk2g0ouw2" path="res://scripts/entities/player/components/player_audio_manager.gd" id="5_bcxpf"]
+[ext_resource type="AudioStream" uid="uid://b0wfcye8ndopd" path="res://sounds/perfectdodgesfx.wav" id="6_puob5"]
+[ext_resource type="AudioStream" uid="uid://ddu2c4px4efhi" path="res://sounds/damagesfx.mp3" id="7_krnyd"]
+[ext_resource type="AudioStream" uid="uid://bb1oc8ak2ay22" path="res://sounds/swingsfx.wav" id="8_50bb7"]
+[ext_resource type="AudioStream" uid="uid://b41af52coxwxw" path="res://sounds/dashsfx.wav" id="9_mn16m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o1akd"]
 atlas = ExtResource("1_6y5ai")
@@ -298,3 +303,18 @@ position = Vector2(7.3919983, -96)
 rotation = 1.5936214
 shape = SubResource("RectangleShape2D_pbkm8")
 debug_color = Color(0.98990947, 0, 0.29037496, 0.41960785)
+
+[node name="AudioManager" type="Node" parent="." unique_id=700490916]
+script = ExtResource("5_bcxpf")
+
+[node name="perfectdodgesfx" type="AudioStreamPlayer" parent="AudioManager" unique_id=1066758011]
+stream = ExtResource("6_puob5")
+
+[node name="damagesfx" type="AudioStreamPlayer" parent="AudioManager" unique_id=1154908068]
+stream = ExtResource("7_krnyd")
+
+[node name="Swingsfx" type="AudioStreamPlayer" parent="AudioManager" unique_id=1289409344]
+stream = ExtResource("8_50bb7")
+
+[node name="Dashsfx" type="AudioStreamPlayer" parent="AudioManager" unique_id=1803850668]
+stream = ExtResource("9_mn16m")
