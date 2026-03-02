@@ -1,6 +1,6 @@
 class_name  PlayerJump extends Movement
 
-const JUMP_VELOCITY =400.0
+const JUMP_VELOCITY =300.0
 const jump_time = 0.1
 const jump_cooldown = 0.6
 var velocity_y = JUMP_VELOCITY

@@ -25,7 +25,7 @@ func _ready() -> void:
 	
 func set_health(hp):
 	super.set_health(hp)
-	lamp.set_life(current_hp)
+#	lamp.set_life(current_hp)
 		
 func on_die():
 	self.global_position = spawnmanager.spawnpoint
@@ -45,6 +45,7 @@ func _physics_process(delta: float) -> void:
 	if is_on_floor():
 		double_jump = true
 	super._physics_process(delta)
+	
 
 func set_hitbox(crouching):
 	if crouching:

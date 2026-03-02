@@ -1,0 +1,118 @@
+[gd_scene format=4 uid="uid://bkgqxdcsh5s00"]
+
+[ext_resource type="Texture2D" uid="uid://dgxn6tp5vdln2" path="res://sprites/abandoned city tile.png" id="1_scgta"]
+[ext_resource type="PackedScene" uid="uid://cwllhlwu7blox" path="res://scenes/characters/luxury.tscn" id="2_hnbyo"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hnbyo"]
+texture = ExtResource("1_scgta")
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/right_side = 0
+2:0/0/terrains_peering_bit/left_side = 0
+3:0/0 = 0
+3:0/0/terrain_set = 0
+3:0/0/terrain = 0
+3:0/0/terrains_peering_bit/bottom_side = 0
+3:0/0/terrains_peering_bit/left_side = 0
+5:0/0 = 0
+6:0/0 = 0
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+1:1/0 = 0
+1:1/0/terrain_set = 0
+1:1/0/terrain = 0
+1:1/0/terrains_peering_bit/left_side = 0
+1:1/0/terrains_peering_bit/top_side = 0
+2:1/0 = 0
+3:1/0 = 0
+3:1/0/terrain_set = 0
+3:1/0/terrain = 0
+3:1/0/terrains_peering_bit/right_side = 0
+3:1/0/terrains_peering_bit/top_side = 0
+4:1/0 = 0
+4:1/0/terrain_set = 0
+4:1/0/terrain = 0
+4:1/0/terrains_peering_bit/bottom_side = 0
+4:1/0/terrains_peering_bit/left_side = 0
+5:1/0 = 0
+6:1/0 = 0
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/bottom_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+4:2/0/terrain_set = 0
+4:2/0/terrain = 0
+4:2/0/terrains_peering_bit/bottom_side = 0
+4:2/0/terrains_peering_bit/top_side = 0
+5:2/0 = 0
+6:2/0 = 0
+0:3/0 = 0
+0:3/0/terrain_set = 0
+0:3/0/terrain = 0
+0:3/0/terrains_peering_bit/right_side = 0
+0:3/0/terrains_peering_bit/top_side = 0
+1:3/0 = 0
+1:3/0/terrain_set = 0
+1:3/0/terrain = 0
+1:3/0/terrains_peering_bit/bottom_side = 0
+1:3/0/terrains_peering_bit/left_side = 0
+2:3/0 = 0
+3:3/0 = 0
+3:3/0/terrain_set = 0
+3:3/0/terrain = 0
+3:3/0/terrains_peering_bit/right_side = 0
+3:3/0/terrains_peering_bit/bottom_side = 0
+4:3/0 = 0
+4:3/0/terrain_set = 0
+4:3/0/terrain = 0
+4:3/0/terrains_peering_bit/left_side = 0
+4:3/0/terrains_peering_bit/top_side = 0
+5:3/0 = 0
+6:3/0 = 0
+1:4/0 = 0
+1:4/0/terrain_set = 0
+1:4/0/terrain = 0
+1:4/0/terrains_peering_bit/right_side = 0
+1:4/0/terrains_peering_bit/top_side = 0
+2:4/0 = 0
+2:4/0/terrain_set = 0
+2:4/0/terrain = 0
+2:4/0/terrains_peering_bit/right_side = 0
+2:4/0/terrains_peering_bit/left_side = 0
+3:4/0 = 0
+3:4/0/terrain_set = 0
+3:4/0/terrain = 0
+3:4/0/terrains_peering_bit/left_side = 0
+3:4/0/terrains_peering_bit/top_side = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fbq1s"]
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "walls "
+terrain_set_0/terrain_0/color = Color(0.6627681, 0.16130775, 0.3509759, 1)
+sources/0 = SubResource("TileSetAtlasSource_hnbyo")
+
+[node name="Room1" type="Node2D" unique_id=249899025]
+
+[node name="Map" type="TileMapLayer" parent="." unique_id=1155645864]
+tile_map_data = PackedByteArray("AACIBE//AAACAAIAAACJBE//AAACAAIAAACKBE//AAACAAIAAACLBE//AAACAAIAAACMBE//AAACAAIAAACNBE//AAACAAIAAACOBE//AAACAAIAAACPBE//AAACAAIAAACQBE//AAACAAIAAAAKAA4AAAAAAAIAAAAKAA8AAAAAAAIAAAAKABAAAAAAAAIAAAAKABEAAAAAAAIAAAAKABIAAAAAAAIAAAAKABMAAAAAAAIAAAAKABQAAAAAAAIAAAAKABUAAAAAAAIAAAAKABYAAAAAAAIAAAAKABcAAAAAAAIAAAAKABgAAAAAAAIAAAAKABkAAAAAAAIAAAAKABoAAAAAAAIAAAAKABsAAAAAAAIAAAAJABYAAAAAAAIAAAAJABUAAAAAAAIAAAAJABQAAAAAAAIAAAAJABMAAAAAAAIAAAAJABIAAAAAAAIAAAAJABEAAAAAAAIAAAAJABAAAAAAAAIAAAAJAA8AAAAAAAIAAAAJAA4AAAAAAAIAAAAKAA0AAAAAAAIAAAAKAAwAAAAAAAIAAAALAAsAAAACAAAAAAAMAAsAAAACAAAAAAANAAsAAAACAAAAAAAOAAsAAAACAAAAAAAPAAsAAAACAAAAAAAQAAsAAAACAAAAAAARAAsAAAACAAAAAAASAAsAAAACAAAAAAATAAsAAAACAAAAAAAUAAsAAAACAAAAAAAVAAsAAAACAAAAAAAWAAsAAAACAAAAAAAXAAsAAAACAAAAAAAYAAsAAAACAAAAAAAZAAsAAAACAAAAAAAaAAsAAAACAAAAAAAbAAsAAAACAAAAAAAcAAsAAAACAAAAAAAdAAsAAAACAAAAAAAeAAsAAAACAAAAAAAfAAsAAAACAAAAAAAgAAsAAAACAAAAAAAhAAsAAAACAAAAAAAiAAsAAAACAAAAAAAjAAsAAAACAAAAAAAkAAsAAAACAAAAAAAlAAsAAAACAAAAAAALABwAAAACAAAAAAAMABwAAAACAAAAAAANABwAAAACAAAAAAAOABwAAAACAAAAAAAPABwAAAACAAAAAAAQABwAAAACAAAAAAARABwAAAACAAAAAAASABwAAAACAAAAAAATABwAAAACAAAAAAAUABwAAAACAAAAAAAVABwAAAACAAAAAAAWABwAAAACAAAAAAAXABwAAAACAAAAAAAYABwAAAACAAAAAAAZABwAAAACAAAAAAAaABwAAAACAAAAAAAbABwAAAACAAAAAAAcABwAAAACAAAAAAAdABwAAAACAAAAAAAeABwAAAACAAAAAAAfABwAAAACAAAAAAAgABwAAAACAAAAAAAhABwAAAACAAAAAAAiABwAAAACAAAAAAAjABwAAAACAAAAAAAkABwAAAACAAAAAAAlABwAAAACAAAAAAAmABwAAAACAAAAAAAoABwAAAACAAAAAAAmAAwAAAAEAAIAAAAmAA0AAAAEAAIAAAAmAA4AAAAEAAIAAAAmAA8AAAAEAAIAAAAmABAAAAAEAAIAAAAmABEAAAAEAAIAAAAmABIAAAAEAAIAAAAmABMAAAAEAAIAAAAmABUAAAAEAAIAAAAmABQAAAAEAAIAAAAnABUAAAACAAAAAAAoABUAAAACAAAAAAApABUAAAACAAAAAAAqABUAAAACAAAAAAArABUAAAACAAAAAAAsABUAAAACAAAAAAAnABwAAAACAAAAAAAoABsAAAACAAAAAAApABsAAAACAAAAAAAqABsAAAACAAAAAAApABwAAAACAAAAAAAqABwAAAACAAAAAAArABwAAAACAAAAAAAsABwAAAACAAAAAAAlABIAAAACAAAAAAAkABIAAAACAAAAAAAjABIAAAACAAAAAAAiABIAAAACAAAAAAAhABIAAAACAAAAAAAgABIAAAACAAAAAAAfABIAAAACAAAAAAAeABIAAAACAAAAAAAdABIAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_fbq1s")
+
+[node name="Luxury" parent="." unique_id=1034526165 instance=ExtResource("2_hnbyo")]
+position = Vector2(548, 241)

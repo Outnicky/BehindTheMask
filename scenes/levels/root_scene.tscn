@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ce8g0etect2dc"]
+
+[ext_resource type="PackedScene" uid="uid://bkgqxdcsh5s00" path="res://scenes/rooms/room_1.tscn" id="1_5rc1h"]
+[ext_resource type="PackedScene" uid="uid://dnddx0njwct44" path="res://scenes/rooms/room_2.tscn" id="2_jo7oj"]
+
+[node name="Node2D" type="Node2D" unique_id=1710642923]
+
+[node name="Room1" parent="." unique_id=1155645864 instance=ExtResource("1_5rc1h")]
+
+[node name="Room2" parent="." unique_id=39142646 instance=ExtResource("2_jo7oj")]

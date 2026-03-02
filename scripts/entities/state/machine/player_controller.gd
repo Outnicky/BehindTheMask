@@ -72,9 +72,10 @@ func update_process(ctx: Context, out: VisualOutput):
 		stance = stance.replace(ctx, Run.new())
 	else:
 		stance = stance.replace(ctx, Normal.new())
-		
+	
 	super.update_process(ctx,out)
 	stance.update_process(ctx, out)
+	ctx.owner.set_hitbox(crouching)
 func update_physics(ctx : Context, out: PhysicsOutput):
 	super.update_physics(ctx, out)
 	stance.update_physics(ctx, out)

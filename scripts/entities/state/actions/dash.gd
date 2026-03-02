@@ -1,6 +1,6 @@
 class_name Dash extends Actions
 
-var dash_speed = 1300
+var dash_speed = 800
 var dashing := true
 var dashing_timer = 0
 var dashing_timeout = 0.2
