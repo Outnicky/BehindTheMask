@@ -17,6 +17,7 @@ func _init():
 	
 func _ready() -> void:
 	max_hp = 5
+	setspawnpoint()
 	super._ready()
 	audio_manager = $AudioManager
 	animation_player = $AnimationController
@@ -26,9 +27,9 @@ func set_health(hp):
 	super.set_health(hp)
 	lamp.set_life(current_hp)
 		
-
 func on_die():
-	get_tree().change_scene_to_file("res://scenes/levels/main_menu.tscn")
+	self.global_position = spawnmanager.spawnpoint
+	set_health(max_hp)
 	
 func take_damage(enemy: EnemyEntity):
 	print(immune )
@@ -52,4 +53,9 @@ func set_hitbox(crouching):
 	else:
 		$CrouchingShape.disabled = true
 		$PlayerHitbox.disabled = false
-		pass
+		pass	
+
+func setspawnpoint():
+	if (spawnmanager.spawnpoint == null):
+		spawnmanager.spawnpoint = global_position
+	pass
