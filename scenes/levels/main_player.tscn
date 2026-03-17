@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cvpnis3h7w2m"]
+
+[ext_resource type="PackedScene" uid="uid://ducbjol5rb3np" path="res://scenes/characters/player.tscn" id="1_q8655"]
+[ext_resource type="Script" uid="uid://dy6hbbo7qwxst" path="res://scripts/camera_personagem.gd" id="2_l6rx3"]
+[ext_resource type="Texture2D" uid="uid://e8tnsx0fce8y" path="res://sprites/pretos5.png" id="3_v20jn"]
+[ext_resource type="PackedScene" uid="uid://kms544s7776v" path="res://scenes/ui.tscn" id="4_uyw4k"]
+
+[node name="MainPlayer" type="Node2D" unique_id=493134847]
+
+[node name="Player" parent="." unique_id=687882061 node_paths=PackedStringArray("lamp") groups=["Player"] instance=ExtResource("1_q8655")]
+position = Vector2(404, 160)
+lamp = NodePath("../CameraPersonagem/CanvasLayer/Ui")
+
+[node name="CameraPersonagem" type="Camera2D" parent="." unique_id=1977310374]
+use_parent_material = true
+position = Vector2(404, 160)
+zoom = Vector2(1.5, 1.5)
+limit_smoothed = true
+script = ExtResource("2_l6rx3")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CameraPersonagem" unique_id=1314536681]
+
+[node name="Sprite2D" type="Sprite2D" parent="CameraPersonagem/CanvasLayer" unique_id=1790333352]
+position = Vector2(576, 320)
+scale = Vector2(1.0971428, 1)
+texture = ExtResource("3_v20jn")
+
+[node name="Ui" parent="CameraPersonagem/CanvasLayer" unique_id=441399968 instance=ExtResource("4_uyw4k")]

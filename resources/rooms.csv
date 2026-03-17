@@ -1,0 +1,16 @@
+{
+  "Room1": {
+	"transitions": [
+	  {
+		"x": 2217.0,
+		"y": 477.0,
+		"destination": "Room2"
+	  },
+	  {
+		"x": 123.811,
+		"y": 86.169,
+		"destination": "Room3"
+	  }
+	]
+  }
+}
